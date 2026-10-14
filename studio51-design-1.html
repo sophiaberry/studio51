@@ -1,0 +1,380 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio 51</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Layout: one pale card over a full-bleed knit. Brand = the Sb element tile, an italic wordmark, and one signature color per service and project. Home stays a short menu; every section and project opens as its own view. Single committed look. */
+:root {
+  --card: #F2EBCF;
+  --ink: #2A2623;
+  --soft: #6B6259;
+  --berry: #8E2E45;
+  --saffron: #C98A22;
+  --rose: #D8638A;
+  --teal: #2C7A71;
+  --plum: #4B2A4F;
+  --cobalt: #3B5DAA;
+  --serif: "Instrument Serif", "Didot", "Times New Roman", serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Inter Tight", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--plum); color: var(--ink); font-family: var(--sans); padding-inline: 16px; padding-block: clamp(16px, 4vw, 44px) 0; }
+#knit { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--berry); outline-offset: 3px; }
+
+.card { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; background: var(--card); border-radius: 16px 16px 0 0; padding: 0 16px 0; min-height: calc(100vh - clamp(16px, 4vw, 44px)); display: flex; flex-direction: column; box-shadow: 0 30px 80px rgba(20,10,20,.35); }
+.views { flex: 1; }
+
+/* brand mark: the antimony tile */
+.tile { --s: 34px; width: var(--s); height: var(--s); border: 1.5px solid var(--ink); position: relative; display: inline-grid; place-items: center; font-family: var(--serif); font-size: calc(var(--s) * .5); line-height: 1; flex: none; background: var(--card); }
+.tile b { position: absolute; top: 2px; left: 3px; font-family: var(--mono); font-weight: 400; font-size: calc(var(--s) * .2); }
+.tile.big { --s: 78px; border-width: 2px; }
+
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-block: 14px 12px; border-bottom: 2px solid var(--ink); font-size: clamp(14px, 2.3vw, 18px); }
+.top .links { display: flex; gap: clamp(14px, 4vw, 34px); align-items: center; }
+.top a { transition: color .2s; }
+.top .links a:hover { color: var(--berry); }
+.top .home { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.6vw, 22px); }
+
+.mono { font-family: var(--mono); font-size: clamp(12px, 1.7vw, 14px); line-height: 1.6; letter-spacing: .02em; }
+.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--soft); }
+
+.masthead { text-align: center; padding-block: clamp(36px, 7vw, 60px) clamp(30px, 6vw, 44px); border-bottom: 2px solid var(--ink); display: grid; justify-items: center; gap: 18px; }
+.masthead h1 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(60px, 13vw, 112px); line-height: .95; letter-spacing: -.01em; }
+.masthead .mono { margin: 0; max-width: 46ch; }
+.tagline { font-family: var(--serif); font-size: clamp(20px, 3vw, 26px); margin: 0; }
+.swatches { display: flex; gap: 6px; }
+.swatches i { width: 22px; height: 6px; border-radius: 3px; display: block; }
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows > li { border-bottom: 2px solid var(--ink); }
+.rows a, .rows .row { display: block; text-align: center; padding-block: 14px; font-weight: 500; font-size: clamp(26px, 5vw, 40px); letter-spacing: -.02em; line-height: 1.15; transition: color .2s; }
+.rows a:hover { color: var(--c, var(--berry)); }
+.rows .sub { display: block; font-family: var(--mono); font-weight: 400; font-size: clamp(12px, 1.7vw, 14px); letter-spacing: .02em; color: var(--soft); margin-top: 6px; }
+.dot { display: inline-block; width: .3em; height: .3em; border-radius: 50%; vertical-align: .34em; margin-right: .35em; background: var(--c); }
+.arrow { font-family: var(--mono); font-size: .45em; vertical-align: .5em; margin-left: .4em; color: var(--soft); }
+
+.view-head { text-align: center; padding-block: clamp(28px, 6vw, 48px) clamp(24px, 5vw, 36px); border-bottom: 2px solid var(--ink); display: grid; gap: 12px; justify-items: center; }
+.view-head h2 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(48px, 9vw, 80px); line-height: 1; }
+.view-head .mono { margin: 0; max-width: 46ch; color: var(--soft); }
+
+/* project view */
+.project { --c: var(--berry); }
+.project .view-head h2 { font-size: clamp(44px, 8.5vw, 76px); }
+.meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 2px solid var(--ink); }
+.meta div { padding: 14px 8px; text-align: center; display: grid; gap: 2px; min-width: 0; }
+.meta div + div { border-left: 2px solid var(--ink); }
+.meta span { font-family: var(--mono); font-size: 11px; color: var(--soft); letter-spacing: .06em; }
+.meta b { font-weight: 500; font-size: 15px; }
+.desc { max-width: 54ch; margin: 0 auto; padding-block: 30px 26px; display: grid; gap: 14px; font-size: 18px; line-height: 1.6; }
+.desc p { margin: 0; }
+.did { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; padding: 0 0 30px; margin: 0; }
+.did li { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border: 1.5px solid var(--ink); border-radius: 999px; }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-bottom: 28px; }
+.gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; background:
+  repeating-linear-gradient(135deg, color-mix(in srgb, var(--c) 22%, var(--card)) 0 10px, color-mix(in srgb, var(--c) 30%, var(--card)) 10px 20px); }
+.gallery figure.wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery figcaption { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--ink); background: var(--card); padding: 3px 8px; border-radius: 999px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; border-top: 2px solid var(--ink); padding-block: 16px; font-family: var(--mono); font-size: 13px; }
+.pager a:hover { color: var(--berry); }
+
+.prose { max-width: 52ch; margin: 0 auto; padding-block: 32px; display: grid; gap: 16px; font-size: 18px; line-height: 1.6; text-align: center; justify-items: center; }
+.prose p { margin: 0; }
+
+.contact { text-align: center; padding-block: 36px 8px; display: grid; gap: 18px; justify-items: center; }
+.addr { font-family: var(--serif); font-style: italic; font-size: clamp(26px, 5vw, 40px); user-select: all; word-break: break-all; }
+.copy { font-family: var(--mono); font-size: 13px; padding: 10px 18px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+.copy:hover { background: var(--ink); color: var(--card); }
+
+.back { display: block; text-align: center; padding-block: 24px; font-family: var(--mono); font-size: 13px; color: var(--soft); }
+.back:hover { color: var(--berry); }
+
+.foot { margin-top: 40px; border-top: 2px solid var(--ink); padding-block: 16px 22px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 20px; }
+.foot .kicker { color: var(--ink); }
+
+@media (max-width: 520px) {
+  .meta { grid-template-columns: minmax(0, 1fr); }
+  .meta div + div { border-left: 0; border-top: 2px solid var(--ink); }
+  .gallery { grid-template-columns: minmax(0, 1fr); }
+  .gallery figure.wide { aspect-ratio: 4 / 3; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head><body>
+
+<canvas id="knit" aria-hidden="true"></canvas>
+
+<main class="card">
+  <nav class="top" aria-label="Main">
+    <a class="home" href="#home" aria-label="Studio 51 home"><span class="tile"><b>51</b>Sb</span>Studio 51</a>
+    <span class="links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </span>
+  </nav>
+
+  <div class="views">
+
+  <!-- Home -->
+  <div data-view="home">
+    <header class="masthead">
+      <span class="tile big"><b>51</b>Sb</span>
+      <h1>Studio 51</h1>
+      <p class="tagline">Made to be looked at.</p>
+      <p class="mono">a creative studio by sophie berry<br>tulsa, ok</p>
+      <div class="swatches" aria-hidden="true"><i style="background:var(--berry)"></i><i style="background:var(--saffron)"></i><i style="background:var(--rose)"></i><i style="background:var(--teal)"></i><i style="background:var(--plum)"></i></div>
+    </header>
+    <ul class="rows">
+      <li><a href="#services" style="--c:var(--berry)">Services</a></li>
+      <li><a href="#work" style="--c:var(--saffron)">Work</a></li>
+      <li><a href="#about" style="--c:var(--teal)">About</a></li>
+      <li><a href="#contact" style="--c:var(--rose)">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Services -->
+  <div data-view="services" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / services</span>
+      <h2>Services</h2>
+      <p class="mono">book one, or bring me in for the whole thing</p>
+    </header>
+    <ul class="rows">
+      <li><div class="row" style="--c:var(--berry)"><span class="dot"></span>Marketing Strategy<span class="sub">positioning, launch plans, content calendars</span></div></li>
+      <li><div class="row" style="--c:var(--saffron)"><span class="dot"></span>Website Design<span class="sub">portfolio and brand sites that are easy to keep up</span></div></li>
+      <li><div class="row" style="--c:var(--rose)"><span class="dot"></span>Content Creation<span class="sub">short-form video, photo direction, scripts, copy</span></div></li>
+      <li><div class="row" style="--c:var(--teal)"><span class="dot"></span>Podcast Production<span class="sub">guest prep, run-of-show, studio days, clips, distribution</span></div></li>
+      <li><div class="row" style="--c:var(--plum)"><span class="dot"></span>Social Management<span class="sub">posting, community, reporting, live event coverage</span></div></li>
+      <li><div class="row" style="--c:var(--cobalt)"><span class="dot"></span>Project Management<span class="sub">timelines, vendors, shoots and launches, kept on track</span></div></li>
+    </ul>
+    <a class="back" href="#home">← home</a>
+  </div>
+
+  <!-- Work index -->
+  <div data-view="work" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work</span>
+      <h2>Work</h2>
+      <p class="mono">select a project</p>
+    </header>
+    <ul class="rows">
+      <li><a href="#jack" style="--c:var(--berry)"><span class="dot"></span>Jack Alexander<span class="arrow">↗</span><span class="sub">coffee table book</span></a></li>
+      <li><a href="#athlos" style="--c:var(--plum)"><span class="dot"></span>ATHLOS<span class="arrow">↗</span><span class="sub">live social · new york &amp; london</span></a></li>
+      <li><a href="#rounds" style="--c:var(--teal)"><span class="dot"></span>Rounds<span class="arrow">↗</span><span class="sub">podcast production</span></a></li>
+      <li><a href="#moffett" style="--c:var(--saffron)"><span class="dot"></span>Matt Moffett<span class="arrow">↗</span><span class="sub">artist website</span></a></li>
+      <li><a href="#desiwok" style="--c:var(--rose)"><span class="dot"></span>Desi Wok<span class="arrow">↗</span><span class="sub">content &amp; shop</span></a></li>
+    </ul>
+    <a class="back" href="#home">← home</a>
+  </div>
+
+  <!-- Project: Jack Alexander -->
+  <div data-view="jack" class="project" style="--c:var(--berry)" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work / 01</span>
+      <h2>Jack Alexander</h2>
+      <p class="mono">a coffee table book for a tulsa collector</p>
+    </header>
+    <div class="meta">
+      <div><span>role</span><b>Book creator</b></div>
+      <div><span>where</span><b>Tulsa</b></div>
+      <div><span>when</span><b>Add date</b></div>
+    </div>
+    <div class="desc">
+      <p>I created a coffee table book for Jack Alexander, a Tulsa art collector, bringing the pieces in his collection together in print.</p>
+    </div>
+    <ul class="did"><li>book design</li><li>art direction</li><li>print production</li></ul>
+    <div class="gallery">
+      <figure class="wide"><figcaption>photo 01 · add image</figcaption></figure>
+      <figure><figcaption>photo 02</figcaption></figure>
+      <figure><figcaption>photo 03</figcaption></figure>
+    </div>
+    <nav class="pager"><a href="#work">← all work</a><a href="#athlos">next: athlos →</a></nav>
+  </div>
+
+  <!-- Project: ATHLOS -->
+  <div data-view="athlos" class="project" style="--c:var(--plum)" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work / 02</span>
+      <h2>ATHLOS</h2>
+      <p class="mono">live social for the women's track meet</p>
+    </header>
+    <div class="meta">
+      <div><span>role</span><b>On-site media manager</b></div>
+      <div><span>where</span><b>New York · London</b></div>
+      <div><span>when</span><b>2025 – 2026</b></div>
+    </div>
+    <div class="desc">
+      <p>At ATHLOS NYC and ATHLOS London, I sat in the broadcast truck as the social team's eye. I called which moments the EVS operator should cut as races happened, and those clips went straight to the editors.</p>
+      <p>The result was finish-line reactions and race moments on social within minutes, while the meet was still running.</p>
+    </div>
+    <ul class="did"><li>live clipping</li><li>EVS direction</li><li>real-time social</li></ul>
+    <div class="gallery">
+      <figure class="wide"><figcaption>photo 01 · add image</figcaption></figure>
+      <figure><figcaption>photo 02</figcaption></figure>
+      <figure><figcaption>photo 03</figcaption></figure>
+    </div>
+    <nav class="pager"><a href="#jack">← jack alexander</a><a href="#rounds">next: rounds →</a></nav>
+  </div>
+
+  <!-- Project: Rounds -->
+  <div data-view="rounds" class="project" style="--c:var(--teal)" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work / 03</span>
+      <h2>Rounds</h2>
+      <p class="mono">where healthcare meets wall street</p>
+    </header>
+    <div class="meta">
+      <div><span>role</span><b>Producer</b></div>
+      <div><span>hosts</span><b>Christina Farr · Stephanie Davis</b></div>
+      <div><span>when</span><b>2026</b></div>
+    </div>
+    <div class="desc">
+      <p>End-to-end production for a video podcast on health tech and investing, presented by SVB. I prepped guests and talking points, built each run-of-show, ran studio days in New York, and turned every episode into clips, chapters and posts.</p>
+      <p>Guests included leaders from Rock Health Advisory, Aidoc, Oxeon, Primary Venture Partners, Grow Therapy and Talkspace.</p>
+    </div>
+    <ul class="did"><li>guest prep</li><li>run-of-show</li><li>studio days</li><li>clips &amp; chapters</li><li>linkedin &amp; youtube</li></ul>
+    <div class="gallery">
+      <figure class="wide"><figcaption>photo 01 · add image</figcaption></figure>
+      <figure><figcaption>photo 02</figcaption></figure>
+      <figure><figcaption>photo 03</figcaption></figure>
+    </div>
+    <nav class="pager"><a href="#athlos">← athlos</a><a href="#moffett">next: matt moffett →</a></nav>
+  </div>
+
+  <!-- Project: Matt Moffett -->
+  <div data-view="moffett" class="project" style="--c:var(--saffron)" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work / 04</span>
+      <h2>Matt Moffett</h2>
+      <p class="mono">portfolio site for a tulsa painter</p>
+    </header>
+    <div class="meta">
+      <div><span>role</span><b>Design &amp; build</b></div>
+      <div><span>where</span><b>Tulsa</b></div>
+      <div><span>when</span><b>2026</b></div>
+    </div>
+    <div class="desc">
+      <p>A home for Matt's paintings, mosaics and prints. Every piece shows full size, with what's available listed first and sold work kept on view.</p>
+      <p>Prints sell through Shopify, and a simple dashboard lets Matt add new work himself.</p>
+    </div>
+    <ul class="did"><li>web design</li><li>shopify</li><li>self-edit dashboard</li></ul>
+    <div class="gallery">
+      <figure class="wide"><figcaption>photo 01 · add image</figcaption></figure>
+      <figure><figcaption>photo 02</figcaption></figure>
+      <figure><figcaption>photo 03</figcaption></figure>
+    </div>
+    <nav class="pager"><a href="#rounds">← rounds</a><a href="#desiwok">next: desi wok →</a></nav>
+  </div>
+
+  <!-- Project: Desi Wok -->
+  <div data-view="desiwok" class="project" style="--c:var(--rose)" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / work / 05</span>
+      <h2>Desi Wok</h2>
+      <p class="mono">spice wheel · content &amp; shop</p>
+    </header>
+    <div class="meta">
+      <div><span>role</span><b>Content &amp; social</b></div>
+      <div><span>channels</span><b>TikTok · Etsy · Amazon</b></div>
+      <div><span>when</span><b>Ongoing</b></div>
+    </div>
+    <div class="desc">
+      <p>Ongoing content for Spice Wheel, a spice brand. I developed two short-form series, <i>Things I Learned About Spices</i> and <i>Tea with Labrena</i>, and wrote the scripts.</p>
+      <p>I also handle launch captions, Amazon and Etsy listings, and fixes to the Shopify theme.</p>
+    </div>
+    <ul class="did"><li>video series</li><li>scripts</li><li>listings</li><li>shopify</li></ul>
+    <div class="gallery">
+      <figure class="wide"><figcaption>photo 01 · add image</figcaption></figure>
+      <figure><figcaption>photo 02</figcaption></figure>
+      <figure><figcaption>photo 03</figcaption></figure>
+    </div>
+    <nav class="pager"><a href="#moffett">← matt moffett</a><a href="#work">all work →</a></nav>
+  </div>
+
+  <!-- About -->
+  <div data-view="about" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / about</span>
+      <h2>About</h2>
+    </header>
+    <div class="prose">
+      <p>Studio 51 is the practice of Sophie Berry, a content producer and social strategist from Tulsa.</p>
+      <p>I've produced podcasts, run creator accounts, clipped live sport from the broadcast truck and built sites for artists, working from New York, Rotterdam and Genoa along the way.</p>
+      <span class="tile big"><b>51</b>Sb</span>
+      <p class="mono" style="color:var(--soft)">sb is antimony, element 51, and my initials.<br>it was ground into kohl, the first eyeliner:<br>one of the first things made to be looked at.</p>
+    </div>
+    <a class="back" href="#home">← home</a>
+  </div>
+
+  <!-- Contact -->
+  <div data-view="contact" hidden>
+    <header class="view-head">
+      <span class="kicker">51 / contact</span>
+      <h2>Contact</h2>
+      <p class="mono">tell me what you're working on and when you need it</p>
+    </header>
+    <div class="contact">
+      <span class="addr" id="addr">sophienberry@gmail.com</span>
+      <button class="copy" id="copyBtn" type="button">copy email</button>
+    </div>
+    <a class="back" href="#home">← home</a>
+  </div>
+
+  </div>
+
+  <footer class="foot">
+    <span class="kicker">studio 51 llc · est. 2026</span>
+    <div class="swatches" aria-hidden="true"><i style="background:var(--berry)"></i><i style="background:var(--saffron)"></i><i style="background:var(--rose)"></i><i style="background:var(--teal)"></i><i style="background:var(--plum)"></i></div>
+    <span class="kicker">tulsa, ok</span>
+  </footer>
+</main>
+
+<script>
+const views=[...document.querySelectorAll('[data-view]')];
+function route(){
+  const h=(location.hash||'#home').slice(1);
+  const name=views.some(v=>v.dataset.view===h)?h:'home';
+  views.forEach(v=>v.hidden=v.dataset.view!==name);
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route); route();
+
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hex(h){h=h.trim().replace('#','');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function drawKnit(){
+  const c=document.getElementById('knit'),dpr=Math.min(devicePixelRatio||1,2),W=innerWidth,H=innerHeight;
+  c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);
+  const x=c.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);
+  const css=getComputedStyle(document.documentElement),t=n=>hex(css.getPropertyValue(n));
+  const bands=[t('--plum'),t('--berry'),t('--rose'),t('--saffron'),t('--card'),t('--teal'),t('--plum'),t('--berry'),t('--saffron'),t('--rose')];
+  const heights=[5,3,2,4,1,3,4,2,3,2],period=heights.reduce((a,b)=>a+b,0);
+  const sw=7,sh=9,amp=7,wave=22,rnd=mulberry32(51);
+  x.fillStyle='#1c1219';x.fillRect(0,0,W,H);
+  for(let row=0;row*sh<H+sh;row++){
+    for(let col=0;col*sw<W+sw;col++){
+      const tri=Math.abs(((col/wave)%1)*2-1);
+      let k=Math.floor(row+tri*amp+(col>W/sw/2?3:0))%period;if(k<0)k+=period;
+      let i=0,acc=0;while(acc+heights[i]<=k){acc+=heights[i];i++}
+      const base=bands[i],n=.78+rnd()*.34,px=col*sw,py=row*sh;
+      const g=x.createLinearGradient(px,py,px+sw,py);
+      g.addColorStop(0,`rgb(${base.map(v=>v*n*.62|0)})`);g.addColorStop(.45,`rgb(${base.map(v=>Math.min(255,v*n*1.12)|0)})`);g.addColorStop(1,`rgb(${base.map(v=>v*n*.62|0)})`);
+      x.fillStyle=g;x.beginPath();x.ellipse(px+sw/2,py+sh/2,sw/2-.6,sh/2-.4,0,0,Math.PI*2);x.fill();
+    }
+  }
+}
+drawKnit();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(drawKnit,150)});
+
+document.getElementById('copyBtn').addEventListener('click',()=>{
+  const btn=document.getElementById('copyBtn'),el=document.getElementById('addr');
+  const done=m=>{btn.textContent=m;setTimeout(()=>btn.textContent='copy email',1600)};
+  const fallback=()=>{const s=getSelection(),r=document.createRange();r.selectNodeContents(el);s.removeAllRanges();s.addRange(r);done('selected')};
+  try{navigator.clipboard.writeText(el.textContent).then(()=>done('copied'),fallback)}catch(e){fallback()}
+});
+</script>
+</body></html>
