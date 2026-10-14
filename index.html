@@ -82,6 +82,9 @@ a { color: inherit; text-decoration: none; }
 .titlebar .crumbs a { opacity: .7; }
 .titlebar .crumbs a:hover { opacity: 1; }
 .titlebar .spacer { width: 22px; flex: none; }
+.titlebar .back { width: 70px; flex: none; padding: 3px 0; border-radius: 999px; background: var(--paper); color: var(--ink); text-align: center; font-size: 12px; }
+.titlebar .back:hover { background: var(--saffron); }
+.titlebar:has(.back) .close { margin-right: 48px; }
 .pane { overflow-y: auto; padding: 0 18px 22px; }
 
 .head { text-align: center; padding-block: 30px 22px; border-bottom: 2px solid var(--ink); display: grid; gap: 10px; justify-items: center; }
@@ -215,7 +218,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="jack" style="--c:var(--berry)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Jack Alexander</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Jack Alexander</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 01</span><h2>Jack Alexander</h2><p class="mono">a coffee table book for tulsa collectors</p></header>
     <div class="meta"><div><span>role</span><b>Producer &amp; editor</b></div><div><span>where</span><b>Tulsa</b></div><div><span>when</span><b>Add date</b></div></div>
@@ -227,7 +230,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="athlos" style="--c:var(--plum)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / ATHLOS</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / ATHLOS</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 02</span><h2>ATHLOS</h2><p class="mono">creative strategy &amp; live social for the women's track meet</p></header>
     <div class="meta"><div><span>role</span><b>Creative strategy, social &amp; media management</b></div><div><span>where</span><b>New York · London</b></div><div><span>when</span><b>2024 – 2026</b></div></div>
@@ -239,7 +242,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="rounds" style="--c:var(--teal)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Rounds</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Rounds</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 03</span><h2>Rounds</h2><p class="mono">where healthcare meets wall street</p></header>
     <div class="meta"><div><span>role</span><b>Producer</b></div><div><span>where</span><b>NYC</b></div><div><span>when</span><b>2026</b></div></div>
@@ -251,7 +254,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="moffett" style="--c:var(--saffron)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Matt Moffett</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Matt Moffett</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 04</span><h2>Matt Moffett</h2><p class="mono">portfolio site for a tulsa painter</p></header>
     <div class="meta"><div><span>role</span><b>Design &amp; build</b></div><div><span>where</span><b>Tulsa</b></div><div><span>when</span><b>2026</b></div></div>
@@ -263,7 +266,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="spicewheel" style="--c:var(--rose)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Spice Wheel</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Spice Wheel</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 05</span><h2>Spice Wheel</h2><p class="mono">social, content &amp; video for a masala dabba brand</p></header>
     <div class="meta"><div><span>role</span><b>Social, content &amp; video</b></div><div><span>channels</span><b>TikTok</b></div><div><span>when</span><b>Ongoing</b></div></div>
@@ -275,7 +278,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
 <section class="win" data-win="desiwok" style="--c:var(--cobalt)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Desi Wok</span><span class="spacer"></span></div>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Desi Wok</span><a class="back" href="#work">← back</a></div>
   <div class="pane">
     <header class="head"><span class="kicker">51 / work / 06</span><h2>Desi Wok</h2><p class="mono">social content &amp; influencers</p></header>
     <div class="meta"><div><span>role</span><b>Social content &amp; influencers</b></div><div><span>where</span><b>Tulsa</b></div><div><span>when</span><b>Add date</b></div></div>
