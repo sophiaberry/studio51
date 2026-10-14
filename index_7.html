@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Studio 51 is a creative studio by Sophie Berry: marketing strategy, website design, content creation, podcast production, social management and project management. Tulsa, Oklahoma.">
+<title>Studio 51</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,700..900,100&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+/* Layout: two scenes. Splash = a butter page with STUDIO51 alone; hovering swaps it for a small hot-pink ENTER. Desktop = flat tan with brand-color folders, a centered row of file icons, and each section opening as a small window. Single committed look. */
+:root {
+  --pink: #EB4697;
+  --orange: #EE9147;
+  --lime: #FBF98F;
+  --cyan: #CBEEF3;
+  --card: #F3EAD8;
+  --ink: #16262A;
+  --soft: #56625F;
+  --wall: #F3EAD8;
+  --paper: #FFFCF4;
+  --hot: #EB4697;
+  /* per-item accent tokens used by services and projects */
+  --berry: #C42B2D;
+  --saffron: #EE9147;
+  --rose: #EB4697;
+  --teal: #9E973A;
+  --plum: #CBEEF3;
+  --cobalt: #FBF98F;
+  --display: "Fraunces", "Cooper Black", "Georgia", serif;
+  --serif: "Instrument Serif", "Didot", "Times New Roman", serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Inter Tight", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--ink); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+[data-scene] { min-height: 100%; }
+
+/* ---------- Splash ---------- */
+.splash { height: 100%; min-height: 420px; background: var(--card); display: flex; flex-direction: column; }
+.door { flex: 1; display: grid; place-items: center; padding: 16px; }
+.door a { position: relative; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(64px, 14vw, 200px); line-height: 1; color: var(--ink); padding: .1em .2em; }
+.door a span { grid-area: 1 / 1; transition: opacity .25s, transform .25s; }
+.door .to { opacity: 0; transform: translateY(.12em); color: var(--hot); font-family: var(--mono); font-style: normal; font-size: clamp(16px, 2vw, 22px); letter-spacing: .3em; }
+.door a:hover .from, .door a:focus-visible .from { opacity: 0; transform: translateY(-.12em); }
+.door a:hover .to, .door a:focus-visible .to { opacity: 1; transform: none; }
+.splash footer { padding: 12px 16px 16px; font-size: 12px; color: var(--soft); text-align: center; line-height: 1.45; }
+
+/* ---------- Desktop ---------- */
+.desktop { position: relative; min-height: 100%; display: flex; flex-direction: column; background: var(--wall); }
+.icons { position: relative; z-index: 1; flex: 1; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: clamp(18px, 4vw, 48px); padding: 80px 16px; }
+.icon { width: 120px; display: grid; justify-items: center; gap: 10px; text-align: center; color: var(--ink); font-size: 15px; font-weight: 500; border-radius: 8px; padding: 8px 4px; transition: transform .15s; }
+.icon:hover { transform: translateY(-3px); }
+.icon:hover .lbl { background: var(--ink); color: var(--paper); }
+.icon svg { width: 96px; height: 88px; filter: drop-shadow(0 6px 10px rgba(60, 40, 20, .18)); }
+.lbl { padding: 1px 7px; border-radius: 4px; }
+.bar { position: relative; z-index: 1; text-align: center; padding: 14px 16px 18px; font-size: 14px; color: var(--ink); display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
+.bar a { text-decoration: underline; text-underline-offset: 3px; }
+.bar { align-items: center; }
+.tile { --s: 84px; width: var(--s); height: var(--s); border: 2px solid var(--ink); background: var(--paper); color: var(--ink); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; flex: none; }
+.tile { position: relative; }
+.tile b { position: absolute; top: calc(var(--s) * .07); left: calc(var(--s) * .09); font-family: var(--mono); font-weight: 400; font-size: calc(var(--s) * .16); letter-spacing: .04em; }
+.tile i { font-family: var(--serif); font-style: italic; font-size: calc(var(--s) * .56); margin-top: calc(var(--s) * .1); }
+.corner { position: absolute; top: 18px; left: 18px; z-index: 2; transition: transform .15s; }
+.corner:hover { transform: rotate(-4deg); }
+.corner .tile { --s: 64px; }
+
+/* ---------- Windows ---------- */
+.win { position: fixed; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(640px, calc(100vw - 32px)); max-height: min(82vh, 820px); display: flex; flex-direction: column; background: var(--paper); border-radius: 12px; box-shadow: 0 30px 80px rgba(60,40,20,.22), 0 0 0 1.5px var(--ink); overflow: hidden; }
+.titlebar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 13px; cursor: grab; user-select: none; touch-action: none; }
+.titlebar:active { cursor: grabbing; }
+.titlebar .close { width: 22px; height: 22px; border-radius: 50%; background: var(--pink); color: var(--ink); display: grid; place-items: center; font-size: 15px; line-height: 1; flex: none; }
+.titlebar .close:hover { background: var(--saffron); }
+.titlebar .crumbs { flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titlebar .crumbs a { opacity: .7; }
+.titlebar .crumbs a:hover { opacity: 1; }
+.titlebar .spacer { width: 22px; flex: none; }
+.pane { overflow-y: auto; padding: 0 18px 22px; }
+
+.head { text-align: center; padding-block: 30px 22px; border-bottom: 2px solid var(--ink); display: grid; gap: 10px; justify-items: center; }
+.head h2 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(46px, 8.5vw, 74px); line-height: 1; }
+.head .mono { margin: 0; color: var(--soft); max-width: 44ch; }
+.mono { font-family: var(--mono); font-size: 13px; line-height: 1.6; letter-spacing: .02em; }
+.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--soft); }
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows > li { border-bottom: 2px solid var(--ink); }
+.rows a, .rows .row { display: block; text-align: center; padding-block: 12px; font-weight: 500; font-size: clamp(24px, 4.4vw, 34px); letter-spacing: -.02em; line-height: 1.15; transition: color .2s; }
+.rows a:hover { color: var(--pink); }
+.rows .sub { display: block; font-family: var(--mono); font-weight: 400; font-size: 13px; letter-spacing: .02em; color: var(--soft); margin-top: 5px; }
+.dot { display: inline-block; width: .32em; height: .32em; border-radius: 50%; vertical-align: .32em; margin-right: .35em; background: var(--c); box-shadow: inset 0 0 0 1px rgba(22,38,42,.28); }
+.arrow { font-family: var(--mono); font-size: .45em; vertical-align: .5em; margin-left: .4em; color: var(--soft); }
+
+.meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 2px solid var(--ink); }
+.meta div { padding: 12px 8px; text-align: center; display: grid; gap: 2px; min-width: 0; }
+.meta div + div { border-left: 2px solid var(--ink); }
+.meta span { font-family: var(--mono); font-size: 11px; color: var(--soft); letter-spacing: .06em; }
+.meta b { font-weight: 500; font-size: 15px; }
+.desc { max-width: 54ch; margin: 0 auto; padding-block: 24px 20px; display: grid; gap: 12px; font-size: 17px; line-height: 1.6; }
+.desc p { margin: 0; }
+.did { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; padding: 0 0 24px; margin: 0; }
+.did li { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border: 1.5px solid var(--ink); border-radius: 999px; }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--c) 16%, var(--paper)) 0 10px, color-mix(in srgb, var(--c) 26%, var(--paper)) 10px 20px); }
+.gallery figure.wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery figcaption { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; background: var(--paper); padding: 3px 8px; border-radius: 999px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; border-top: 2px solid var(--ink); margin-top: 22px; padding-top: 14px; font-family: var(--mono); font-size: 13px; }
+.pager a:hover { color: var(--pink); }
+
+.prose { max-width: 50ch; margin: 0 auto; padding-block: 26px 6px; display: grid; gap: 14px; font-size: 17px; line-height: 1.6; text-align: center; justify-items: center; }
+.prose p { margin: 0; }
+.portrait { margin: 0 0 6px; position: relative; width: min(260px, 70%); aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--rose) 16%, var(--paper)) 0 10px, color-mix(in srgb, var(--rose) 26%, var(--paper)) 10px 20px); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait figcaption { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; background: var(--paper); padding: 3px 8px; border-radius: 999px; }
+.contact { text-align: center; padding-block: 30px 6px; display: grid; gap: 16px; justify-items: center; }
+.addr { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 5vw, 36px); user-select: all; word-break: break-all; }
+.copy { font-family: var(--mono); font-size: 13px; padding: 10px 18px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+.copy:hover { background: var(--ink); color: var(--paper); }
+
+@media (max-width: 520px) {
+  .meta { grid-template-columns: minmax(0, 1fr); }
+  .meta div + div { border-left: 0; border-top: 2px solid var(--ink); }
+  .gallery { grid-template-columns: minmax(0, 1fr); }
+  .icon { width: 100px; font-size: 14px; }
+  .icon svg { width: 80px; height: 74px; }
+  .win { max-height: calc(100% - 32px); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ===== Splash ===== -->
+<div class="splash" data-scene="splash">
+  <div class="door"><a href="#desktop" aria-label="Enter Studio 51"><span class="from">STUDIO51</span><span class="to">ENTER</span></a></div>
+  <footer>A creative studio by Sophie Berry · Tulsa, Oklahoma</footer>
+</div>
+
+<!-- ===== Desktop ===== -->
+<div class="desktop" data-scene="desktop" hidden>
+  <a class="corner" href="#about" aria-label="About Studio 51"><span class="tile"><b>51</b><i>Sb</i></span></a>
+  <nav class="icons" aria-label="Studio 51">
+    <a class="icon" href="#about">
+      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#C9327C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EB4697"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F27BB5"/><text x="48" y="72" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="52" fill="#FFFCF4">&#8220;</text></svg>
+      <span class="lbl">About STUDIO51</span>
+    </a>
+    <a class="icon" href="#services">
+      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#D7742C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EE9147"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F4B07A"/><g transform="translate(48 53)" fill="none" stroke="#FFFCF4" stroke-width="2.4"><rect x="-11" y="-11" width="22" height="22" transform="rotate(45)"/><circle r="3.2" fill="#FFFCF4" stroke="none"/></g></svg>
+      <span class="lbl">Services</span>
+    </a>
+    <a class="icon" href="#work">
+      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#9F1F21"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#C42B2D"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#D9605F"/><g fill="none" stroke="#FFFCF4" stroke-width="2.4"><rect x="34" y="42" width="28" height="22" rx="2"/><path d="M41 42v-4h14v4M34 51h28"/></g></svg>
+      <span class="lbl">Selected Work</span>
+    </a>
+    <a class="icon" href="#contact">
+      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#807A2B"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#9E973A"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#BDB766"/><g fill="none" stroke="#FFFCF4" stroke-width="2.4" stroke-linejoin="round"><rect x="33" y="42" width="30" height="21" rx="2"/><path d="M33 44l15 10 15-10"/></g></svg>
+      <span class="lbl">Contact</span>
+    </a>
+  </nav>
+  <div class="bar"><span>Studio 51 LLC</span><span id="clock">Tulsa, OK</span><a href="#contact">Email</a></div>
+</div>
+
+<!-- ===== Windows ===== -->
+<section class="win" data-win="about" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">About STUDIO51</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / about</span><h2>About</h2></header>
+    <div class="prose">
+      <figure class="portrait"><figcaption>photo of sophie · add image</figcaption></figure>
+      <p>Studio 51 is the practice of Sophie Berry, a content producer and social strategist from Tulsa.</p>
+      <p>I've produced podcasts, run creator accounts, clipped live sport from the broadcast truck and built sites for artists, working from New York, Rotterdam and Genoa along the way.</p>
+      <span class="tile"><b>51</b><i>Sb</i></span>
+      <p class="mono" style="color:var(--soft)">sb is antimony, element 51, and my initials.<br>it was ground into kohl, the first eyeliner:<br>one of the first things made to be looked at.</p>
+    </div>
+  </div>
+</section>
+
+<section class="win" data-win="services" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Services</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / services</span><h2>Services</h2><p class="mono">book one, or bring me in for the whole thing</p></header>
+    <ul class="rows">
+      <li><div class="row" style="--c:var(--berry)"><span class="dot"></span>Marketing Strategy<span class="sub">positioning, launch plans, content calendars</span></div></li>
+      <li><div class="row" style="--c:var(--saffron)"><span class="dot"></span>Website Design<span class="sub">portfolio and brand sites that are easy to keep up</span></div></li>
+      <li><div class="row" style="--c:var(--rose)"><span class="dot"></span>Content Creation<span class="sub">short-form video, photo direction, scripts, copy</span></div></li>
+      <li><div class="row" style="--c:var(--teal)"><span class="dot"></span>Podcast Production<span class="sub">guest prep, run-of-show, studio days, clips, distribution</span></div></li>
+      <li><div class="row" style="--c:var(--plum)"><span class="dot"></span>Social Management<span class="sub">posting, community, reporting, live event coverage</span></div></li>
+      <li><div class="row" style="--c:var(--cobalt)"><span class="dot"></span>Project Management<span class="sub">timelines, vendors, shoots and launches, kept on track</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="win" data-win="work" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Selected Work</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work</span><h2>Work</h2><p class="mono">select a project</p></header>
+    <ul class="rows">
+      <li><a href="#jack" style="--c:var(--berry)"><span class="dot"></span>Jack Alexander<span class="arrow">↗</span><span class="sub">coffee table book</span></a></li>
+      <li><a href="#athlos" style="--c:var(--plum)"><span class="dot"></span>ATHLOS<span class="arrow">↗</span><span class="sub">live social · new york &amp; london</span></a></li>
+      <li><a href="#rounds" style="--c:var(--teal)"><span class="dot"></span>Rounds<span class="arrow">↗</span><span class="sub">podcast production</span></a></li>
+      <li><a href="#moffett" style="--c:var(--saffron)"><span class="dot"></span>Matt Moffett<span class="arrow">↗</span><span class="sub">artist website</span></a></li>
+      <li><a href="#desiwok" style="--c:var(--rose)"><span class="dot"></span>Desi Wok<span class="arrow">↗</span><span class="sub">content &amp; shop</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="win" data-win="jack" style="--c:var(--berry)" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Jack Alexander</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work / 01</span><h2>Jack Alexander</h2><p class="mono">a coffee table book for a tulsa collector</p></header>
+    <div class="meta"><div><span>role</span><b>Book creator</b></div><div><span>where</span><b>Tulsa</b></div><div><span>when</span><b>Add date</b></div></div>
+    <div class="desc"><p>I created a coffee table book for Jack Alexander, a Tulsa art collector, bringing the pieces in his collection together in print.</p></div>
+    <ul class="did"><li>book design</li><li>art direction</li><li>print production</li></ul>
+    <div class="gallery"><figure class="wide"><figcaption>photo 01 · add image</figcaption></figure><figure><figcaption>photo 02</figcaption></figure><figure><figcaption>photo 03</figcaption></figure></div>
+    <nav class="pager"><a href="#work">← all work</a><a href="#athlos">next: athlos →</a></nav>
+  </div>
+</section>
+
+<section class="win" data-win="athlos" style="--c:var(--plum)" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / ATHLOS</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work / 02</span><h2>ATHLOS</h2><p class="mono">live social for the women's track meet</p></header>
+    <div class="meta"><div><span>role</span><b>On-site media manager</b></div><div><span>where</span><b>New York · London</b></div><div><span>when</span><b>2025 – 2026</b></div></div>
+    <div class="desc"><p>At ATHLOS NYC and ATHLOS London, I sat in the broadcast truck as the social team's eye. I called which moments the EVS operator should cut as races happened, and those clips went straight to the editors.</p><p>The result was finish-line reactions and race moments on social within minutes, while the meet was still running.</p></div>
+    <ul class="did"><li>live clipping</li><li>EVS direction</li><li>real-time social</li></ul>
+    <div class="gallery"><figure class="wide"><figcaption>photo 01 · add image</figcaption></figure><figure><figcaption>photo 02</figcaption></figure><figure><figcaption>photo 03</figcaption></figure></div>
+    <nav class="pager"><a href="#jack">← jack alexander</a><a href="#rounds">next: rounds →</a></nav>
+  </div>
+</section>
+
+<section class="win" data-win="rounds" style="--c:var(--teal)" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Rounds</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work / 03</span><h2>Rounds</h2><p class="mono">where healthcare meets wall street</p></header>
+    <div class="meta"><div><span>role</span><b>Producer</b></div><div><span>hosts</span><b>Christina Farr · Stephanie Davis</b></div><div><span>when</span><b>2026</b></div></div>
+    <div class="desc"><p>End-to-end production for a video podcast on health tech and investing, presented by SVB. I prepped guests and talking points, built each run-of-show, ran studio days in New York, and turned every episode into clips, chapters and posts.</p><p>Guests included leaders from Rock Health Advisory, Aidoc, Oxeon, Primary Venture Partners, Grow Therapy and Talkspace.</p></div>
+    <ul class="did"><li>guest prep</li><li>run-of-show</li><li>studio days</li><li>clips &amp; chapters</li><li>linkedin &amp; youtube</li></ul>
+    <div class="gallery"><figure class="wide"><figcaption>photo 01 · add image</figcaption></figure><figure><figcaption>photo 02</figcaption></figure><figure><figcaption>photo 03</figcaption></figure></div>
+    <nav class="pager"><a href="#athlos">← athlos</a><a href="#moffett">next: matt moffett →</a></nav>
+  </div>
+</section>
+
+<section class="win" data-win="moffett" style="--c:var(--saffron)" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Matt Moffett</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work / 04</span><h2>Matt Moffett</h2><p class="mono">portfolio site for a tulsa painter</p></header>
+    <div class="meta"><div><span>role</span><b>Design &amp; build</b></div><div><span>where</span><b>Tulsa</b></div><div><span>when</span><b>2026</b></div></div>
+    <div class="desc"><p>A home for Matt's paintings, mosaics and prints. Every piece shows full size, with what's available listed first and sold work kept on view.</p><p>Prints sell through Shopify, and a simple dashboard lets Matt add new work himself.</p></div>
+    <ul class="did"><li>web design</li><li>shopify</li><li>self-edit dashboard</li></ul>
+    <div class="gallery"><figure class="wide"><figcaption>photo 01 · add image</figcaption></figure><figure><figcaption>photo 02</figcaption></figure><figure><figcaption>photo 03</figcaption></figure></div>
+    <nav class="pager"><a href="#rounds">← rounds</a><a href="#desiwok">next: desi wok →</a></nav>
+  </div>
+</section>
+
+<section class="win" data-win="desiwok" style="--c:var(--rose)" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Desi Wok</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / work / 05</span><h2>Desi Wok</h2><p class="mono">spice wheel · content &amp; shop</p></header>
+    <div class="meta"><div><span>role</span><b>Content &amp; social</b></div><div><span>channels</span><b>TikTok · Etsy · Amazon</b></div><div><span>when</span><b>Ongoing</b></div></div>
+    <div class="desc"><p>Ongoing content for Spice Wheel, a spice brand. I developed two short-form series, <i>Things I Learned About Spices</i> and <i>Tea with Labrena</i>, and wrote the scripts.</p><p>I also handle launch captions, Amazon and Etsy listings, and fixes to the Shopify theme.</p></div>
+    <ul class="did"><li>video series</li><li>scripts</li><li>listings</li><li>shopify</li></ul>
+    <div class="gallery"><figure class="wide"><figcaption>photo 01 · add image</figcaption></figure><figure><figcaption>photo 02</figcaption></figure><figure><figcaption>photo 03</figcaption></figure></div>
+    <nav class="pager"><a href="#moffett">← matt moffett</a><a href="#work">all work →</a></nav>
+  </div>
+</section>
+
+<section class="win" data-win="contact" hidden>
+  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Contact</span><span class="spacer"></span></div>
+  <div class="pane">
+    <header class="head"><span class="kicker">51 / contact</span><h2>Contact</h2><p class="mono">tell me what you're working on and when you need it</p></header>
+    <div class="contact"><span class="addr" id="addr">sophienberry@gmail.com</span><button class="copy" id="copyBtn" type="button">copy email</button></div>
+  </div>
+</section>
+
+<script>
+// ---- Routing: splash, desktop, and windows on top of the desktop ----
+const scenes=[...document.querySelectorAll('[data-scene]')],wins=[...document.querySelectorAll('[data-win]')];
+function route(){
+  const h=(location.hash||'').slice(1),win=wins.find(w=>w.dataset.win===h);
+  const scene=(h==='desktop'||win)?'desktop':'splash';
+  scenes.forEach(s=>s.hidden=s.dataset.scene!==scene);
+  wins.forEach(w=>{w.hidden=w!==win;if(w===win){w.style.left='';w.style.top='';w.style.transform='';w.querySelector('.pane').scrollTop=0}});
+}
+addEventListener('hashchange',route);
+
+// ---- Drag windows by their title bar ----
+wins.forEach(w=>{
+  const bar=w.querySelector('.titlebar');let sx,sy,ox,oy,drag=false;
+  bar.addEventListener('pointerdown',e=>{if(e.target.closest('a'))return;const r=w.getBoundingClientRect();drag=true;sx=e.clientX;sy=e.clientY;ox=r.left;oy=r.top;w.style.transform='none';w.style.left=ox+'px';w.style.top=oy+'px';bar.setPointerCapture(e.pointerId)});
+  bar.addEventListener('pointermove',e=>{if(!drag)return;const nx=Math.min(Math.max(ox+e.clientX-sx,80-w.offsetWidth),innerWidth-80),ny=Math.min(Math.max(oy+e.clientY-sy,8),innerHeight-48);w.style.left=nx+'px';w.style.top=ny+'px'});
+  bar.addEventListener('pointerup',()=>drag=false);
+});
+
+// ---- Clock ----
+function clock(){document.getElementById('clock').textContent='Tulsa, OK · '+new Date().toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}
+clock();setInterval(clock,30000);
+
+// ---- Copy email ----
+document.getElementById('copyBtn').addEventListener('click',()=>{
+  const btn=document.getElementById('copyBtn'),el=document.getElementById('addr');
+  const done=m=>{btn.textContent=m;setTimeout(()=>btn.textContent='copy email',1600)};
+  const fallback=()=>{const s=getSelection(),r=document.createRange();r.selectNodeContents(el);s.removeAllRanges();s.addRange(r);done('selected')};
+  try{navigator.clipboard.writeText(el.textContent).then(()=>done('copied'),fallback)}catch(e){fallback()}
+});
+
+route();
+</script>
+</body>
+</html>
