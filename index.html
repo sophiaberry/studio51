@@ -21,6 +21,9 @@
   --wall: #F3EAD8;
   --paper: #FFFCF4;
   --hot: #EB4697;
+  /* logo colours */
+  --sky: #BFF0F4;
+  --logo-red: #D70F2A;
   /* per-item accent tokens used by services and projects */
   --berry: #C42B2D;
   --saffron: #EE9147;
@@ -44,14 +47,13 @@ a { color: inherit; text-decoration: none; }
 [data-scene] { min-height: 100%; }
 
 /* ---------- Splash ---------- */
-.splash { height: 100%; min-height: 420px; background: var(--card); display: flex; flex-direction: column; }
-.door { flex: 1; display: grid; place-items: center; padding: 16px; }
-.door a { position: relative; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(64px, 14vw, 200px); line-height: 1; color: var(--ink); padding: .1em .2em; }
-.door a span { grid-area: 1 / 1; transition: opacity .25s, transform .25s; }
-.door .to { opacity: 0; transform: translateY(.12em); color: var(--hot); font-family: var(--mono); font-style: normal; font-size: clamp(16px, 2vw, 22px); letter-spacing: .3em; }
-.door a:hover .from, .door a:focus-visible .from { opacity: 0; transform: translateY(-.12em); }
-.door a:hover .to, .door a:focus-visible .to { opacity: 1; transform: none; }
-.splash footer { padding: 12px 16px 16px; font-size: 12px; color: var(--soft); text-align: center; line-height: 1.45; }
+.splash { height: 100%; min-height: 420px; background: var(--sky); display: flex; flex-direction: column; }
+.door { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 5vh, 48px); padding: 16px; }
+.door h1 { margin: 0; line-height: 0; }
+.door img { width: min(340px, 62vw, 40vh); height: auto; display: block; }
+.door .enter { font-family: var(--mono); font-size: 15px; letter-spacing: .3em; padding: 14px 30px 14px 34px; border-radius: 999px; background: var(--logo-red); color: #fff; transition: transform .15s, box-shadow .15s; }
+.door .enter:hover, .door .enter:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(215, 15, 42, .28); }
+.splash footer { padding: 12px 16px 16px; font-size: 12px; color: var(--ink); text-align: center; line-height: 1.45; }
 
 /* ---------- Desktop ---------- */
 .desktop { position: relative; min-height: 100%; display: flex; flex-direction: column; background: var(--wall); }
@@ -144,7 +146,7 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ===== Splash ===== -->
 <div class="splash" data-scene="splash">
-  <div class="door"><a href="#desktop" aria-label="Enter Studio 51"><span class="from">STUDIO51</span><span class="to">ENTER</span></a></div>
+  <div class="door"><h1><img src="images/logo.webp" alt="Studio 51" width="778" height="813"></h1><a class="enter" href="#desktop">ENTER</a></div>
   <footer>A creative studio by Sophie Berry · Tulsa, Oklahoma</footer>
 </div>
 
