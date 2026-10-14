@@ -151,7 +151,7 @@ a { color: inherit; text-decoration: none; }
   .icon svg { width: 80px; height: 74px; }
   .win { max-height: calc(100% - 32px); }
   #clock { display: none; }
-  .bar { flex-wrap: nowrap; white-space: nowrap; gap: 4px 16px; }
+  .bar { flex-wrap: nowrap; white-space: nowrap; gap: 4px 12px; font-size: 13px; padding-inline: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -185,7 +185,7 @@ a { color: inherit; text-decoration: none; }
       <span class="lbl">Contact</span>
     </a>
   </nav>
-  <div class="bar"><span>Studio 51 LLC</span><span id="clock">Tulsa, OK</span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a></div>
+  <div class="bar"><span>Studio 51 LLC</span><span>Tulsa, OK<span id="clock"></span></span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a></div>
 </div>
 
 <!-- ===== Windows ===== -->
@@ -368,7 +368,7 @@ wins.forEach(w=>{
 });
 
 // ---- Clock ----
-function clock(){document.getElementById('clock').textContent='Tulsa, OK · '+new Date().toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}
+function clock(){document.getElementById('clock').textContent=' · '+new Date().toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}
 clock();setInterval(clock,30000);
 
 // ---- Copy email ----
