@@ -70,6 +70,8 @@ a { color: inherit; text-decoration: none; }
 .bar { position: relative; z-index: 1; text-align: center; padding: 14px 16px 18px; font-size: 14px; color: var(--ink); display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
 .bar a { text-decoration: underline; text-underline-offset: 3px; }
 .bar { align-items: center; }
+.bar .ig { display: inline-flex; text-decoration: none; transition: color .15s; }
+.bar .ig:hover { color: var(--logo-red); }
 .corner { position: absolute; top: 18px; left: 18px; z-index: 2; transition: transform .15s; }
 .corner:hover { transform: rotate(-4deg); }
 .corner img { width: 72px; height: auto; display: block; }
@@ -154,6 +156,7 @@ a { color: inherit; text-decoration: none; }
   #clock { display: none; }
   .bar { flex-wrap: nowrap; white-space: nowrap; gap: 4px 12px; font-size: 13px; padding-inline: 8px; }
 }
+@media (max-width: 380px) { .bar { font-size: 12px; gap: 4px 9px; padding-inline: 4px; } .bar .ig svg { width: 16px; height: 16px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -186,7 +189,7 @@ a { color: inherit; text-decoration: none; }
       <span class="lbl">Contact</span>
     </a>
   </nav>
-  <div class="bar"><span>Studio 51 LLC</span><span>Tulsa, OK<span id="clock"></span></span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a></div>
+  <div class="bar"><span>Studio 51 LLC</span><span>Tulsa, OK<span id="clock"></span></span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a><a class="ig" href="https://www.instagram.com/studio51media" target="_blank" rel="noopener" aria-label="Studio 51 on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div>
 </div>
 
 <!-- ===== Windows ===== -->
