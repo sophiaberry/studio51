@@ -83,9 +83,9 @@ a { color: inherit; text-decoration: none; }
 .corner { position: absolute; top: 18px; left: 18px; z-index: 2; transition: transform .15s; }
 .corner:hover { transform: rotate(-4deg); }
 .corner img { width: 72px; height: auto; display: block; }
-.element { position: absolute; top: 18px; right: 18px; z-index: 2; width: 34px; height: 34px; border: 1.5px solid var(--ink); border-radius: 3px; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1; color: var(--ink); opacity: .45; transition: opacity .2s, transform .2s; }
-.element small { position: absolute; top: 2px; left: 3px; font-family: var(--mono); font-style: normal; font-size: 7px; }
-.element:hover, .element:focus-visible { opacity: 1; transform: rotate(4deg); }
+.element { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 10px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--ink); opacity: 0; transition: opacity .3s; }
+.element:hover, .element:focus-visible { opacity: .8; }
+@media (hover: none) { .element { opacity: .3; } }
 .sb-note { max-width: 40ch; margin: 0 auto; padding-block: 26px 10px; text-align: center; font-size: 17px; line-height: 1.6; }
 
 /* ---------- Windows ---------- */
@@ -183,7 +183,7 @@ a { color: inherit; text-decoration: none; }
 <!-- ===== Desktop ===== -->
 <div class="desktop" data-scene="desktop" hidden>
   <a class="corner" href="#" aria-label="Back to the STUDIO51 landing page"><img src="images/logo.webp" alt="" width="778" height="813"></a>
-  <a class="element" href="#antimony" aria-label="What does 51 mean?"><small>51</small>Sb</a>
+  <a class="element" href="#antimony" aria-label="What does 51 mean?">51 · sb</a>
   <nav class="icons" aria-label="STUDIO51">
     <a class="icon" href="#about">
       <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#C9327C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EB4697"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F27BB5"/><text x="48" y="72" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="52" fill="#FFFCF4">&#8220;</text></svg>
