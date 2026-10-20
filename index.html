@@ -83,10 +83,6 @@ a { color: inherit; text-decoration: none; }
 .corner { position: absolute; top: 18px; left: 18px; z-index: 2; transition: transform .15s; }
 .corner:hover { transform: rotate(-4deg); }
 .corner img { width: 72px; height: auto; display: block; }
-.element { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 10px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--ink); opacity: 0; transition: opacity .3s; }
-.element:hover, .element:focus-visible { opacity: .8; }
-@media (hover: none) { .element { opacity: .3; } }
-.sb-note { max-width: 40ch; margin: 0 auto; padding-block: 26px 10px; text-align: center; font-size: 17px; line-height: 1.6; }
 
 /* ---------- Windows ---------- */
 .win { position: fixed; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(640px, calc(100vw - 32px)); max-height: min(82vh, 820px); display: flex; flex-direction: column; background: var(--paper); border-radius: 12px; box-shadow: 0 30px 80px rgba(60,40,20,.22), 0 0 0 1.5px var(--ink); overflow: hidden; }
@@ -184,7 +180,6 @@ a { color: inherit; text-decoration: none; }
 <!-- ===== Desktop ===== -->
 <div class="desktop" data-scene="desktop" hidden>
   <a class="corner" href="#" aria-label="Back to the STUDIO51 landing page"><img src="images/logo.webp" alt="" width="778" height="813"></a>
-  <a class="element" href="#antimony" aria-label="What does 51 mean?">51 · sb</a>
   <nav class="icons" aria-label="STUDIO51">
     <a class="icon" href="#about">
       <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#C9327C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EB4697"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F27BB5"/><text x="48" y="72" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="52" fill="#FFFCF4">&#8220;</text></svg>
@@ -332,14 +327,6 @@ a { color: inherit; text-decoration: none; }
     <ul class="did"><li>social content</li><li>influencer marketing</li><li>seasonal campaign</li></ul>
     <div class="gallery"><figure class="wide" style="aspect-ratio: 2000 / 1376"><img src="images/desiwok-grid.jpg" alt="Grid of Desi Wok TikTok posts with view counts, up to 84.6K"></figure><figure><video src="videos/desiwok-01.mp4" poster="images/desiwok-01-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Desi Wok summer menu video: tandoor plate, chili garlic noodles, piña colada masala"></video></figure><figure><video src="videos/desiwok-02.mp4" poster="images/desiwok-02-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Influencer video: first time trying Desi Wok"></video></figure></div>
     <nav class="pager"><a href="#jack">← jack alexander</a><a href="#work">all work →</a></nav>
-  </div>
-</section>
-
-<section class="win" data-win="antimony" style="--c:var(--logo-red)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Sb</span><span class="spacer"></span></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / sb</span><h2>Antimony</h2></header>
-    <p class="sb-note">51 on the periodic table is antimony, also known as sb (my initials!). it was ground into kohl, the first eyeliner: one of the first things made to be looked at.</p>
   </div>
 </section>
 
