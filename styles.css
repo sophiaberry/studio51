@@ -332,3 +332,8 @@ footer .ig { display: inline-flex; }
   .p-wrap { grid-template-columns: 1fr; gap: 20px; }
   .p-left > .strip { font-size: 9vw; }
 }
+
+/* ---------- work page v4: fixed, uniform asset grid (no rearranging) ---------- */
+.p-media figure.w { aspect-ratio: 16 / 10; }
+.p-media figure.p { aspect-ratio: 4 / 5; }
+.p-media figure.w img, .p-media figure.w video { object-position: center top; }

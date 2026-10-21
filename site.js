@@ -25,22 +25,3 @@ document.getElementById('inquiry')?.addEventListener('submit',e=>{
     .catch(()=>{st.textContent='something went wrong. please email me directly.'})
     .finally(()=>{btn.disabled=false});
 });
-
-// ---- Work page: move a few assets under the text when the right column runs long ----
-function balance(){
-  document.querySelectorAll('.project').forEach(p=>{
-    const left=p.querySelector('.p-left'),media=p.querySelector('.p-media'),extra=p.querySelector('.p-extra');
-    if(!media)return;
-    [...extra.children].forEach(f=>media.appendChild(f));
-    if(innerWidth<=760)return;
-    while(media.children.length>1){
-      const last=media.lastElementChild,h=last.getBoundingClientRect().height;
-      if(media.offsetHeight-left.offsetHeight<h*0.6)break;
-      extra.prepend(last);
-    }
-    // keep portrait shots in pairs on both sides so no half-empty rows
-    const ports=[...media.querySelectorAll('figure.p')];
-    if(extra.children.length&&ports.length%2)extra.prepend(ports[ports.length-1]);
-  });
-}
-addEventListener('load',balance);addEventListener('resize',()=>{clearTimeout(window._bt);window._bt=setTimeout(balance,150)});
