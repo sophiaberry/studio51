@@ -18,325 +18,324 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"STUDIO51","url":"https://studio-51.co/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,700..900,100&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400&family=Inter+Tight:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=DM+Mono&display=swap">
 <style>
-/* Layout: two scenes. Splash = a butter page with STUDIO51 alone; hovering swaps it for a small hot-pink ENTER. Desktop = flat tan with brand-color folders, a centered row of file icons, and each section opening as a small window. Single committed look. */
 :root {
-  --pink: #EB4697;
-  --orange: #EE9147;
-  --lime: #FBF98F;
-  --cyan: #CBEEF3;
-  --card: #F3EAD8;
-  --ink: #16262A;
-  --soft: #56625F;
-  --wall: #F3EAD8;
-  --paper: #FFFCF4;
-  --hot: #EB4697;
-  /* logo colours */
-  --sky: #BFF0F4;
-  --logo-red: #D70F2A;
-  /* per-item accent tokens used by services and projects */
-  --berry: #C42B2D;
-  --saffron: #EE9147;
-  --rose: #EB4697;
-  --teal: #9E973A;
-  --plum: #CBEEF3;
-  --cobalt: #FBF98F;
-  --lilac: #B9A7F0;
-  --display: "Fraunces", "Cooper Black", "Georgia", serif;
-  --serif: "Instrument Serif", "Didot", "Times New Roman", serif;
-  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --sans: "Inter Tight", "Helvetica Neue", Arial, system-ui, sans-serif;
+  /* brand colours */
+  --wave: #CBEEF3; --fanta: #EE9147; --lioness: #FBF98F; --girl: #EB4697; --strawb: #C42B2D; --olive: #9E973A;
+  --lilac: #B9A7F0; --logo-red: #D70F2A; --sky: #BFF0F4;
+  --ink: #18262B; --paper: #FFFCF4;
+  --grot: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --serif: "EB Garamond", Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+  --mono: "DM Mono", ui-monospace, monospace;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-[hidden] { display: none !important; }
-img { max-width: 100%; }
-html, body { height: 100%; }
-body { margin: 0; background: var(--ink); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
-a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
-[data-scene] { min-height: 100%; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); color: var(--ink); font-family: var(--serif); overflow-x: hidden; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
 
-/* ---------- Splash ---------- */
-.splash { height: 100%; min-height: 420px; background: var(--sky); display: flex; flex-direction: column; }
-.door { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 5vh, 48px); padding: 16px; }
-.door h1 { margin: 0; line-height: 0; }
-.door img { width: min(340px, 62vw, 40vh); height: auto; display: block; }
-.door .enter { font-family: var(--mono); font-size: 15px; letter-spacing: .3em; padding: 14px 30px 14px 34px; border-radius: 999px; background: var(--logo-red); color: #fff; transition: transform .15s, box-shadow .15s; }
-.door .enter:hover, .door .enter:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(215, 15, 42, .28); }
-.splash footer { padding: 12px 16px 16px; font-size: 12px; color: var(--ink); text-align: center; line-height: 1.45; }
+/* the tilted highlighter strip that carries every big heading */
+.strip { display: inline-block; margin: 0; padding: .06em .28em .02em; background: var(--strip, var(--lioness)); color: var(--ink);
+  font-family: var(--grot); font-weight: 900; text-transform: uppercase; letter-spacing: -.035em; line-height: .92;
+  transform: rotate(var(--tilt, -3deg)); box-shadow: 0 0 0 2px var(--ink); }
+.tag { display: inline-block; background: var(--paper); color: var(--ink); font-family: var(--grot); font-weight: 600; font-size: 15px; padding: 3px 8px 2px; border: 1.5px solid var(--ink); letter-spacing: -.01em; }
+.script-bg { position: absolute; inset: auto 0 auto 0; margin: 0; font-family: var(--script); line-height: .9; white-space: nowrap; pointer-events: none; user-select: none; }
 
-/* ---------- Desktop ---------- */
-.desktop { position: relative; min-height: 100%; display: flex; flex-direction: column; background: var(--wall) url("images/desktop-bg.jpg") center / cover no-repeat; }
-.desktop .icon, .desktop .bar { color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, .6); }
-.icons { position: relative; z-index: 1; flex: 1; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: clamp(18px, 4vw, 48px); padding: 80px 16px; }
-.icon { width: 120px; display: grid; justify-items: center; gap: 10px; text-align: center; color: var(--ink); font-size: 15px; font-weight: 500; border-radius: 8px; padding: 8px 4px; transition: transform .15s; }
-.icon:hover { transform: translateY(-3px); }
-.icon:hover .lbl { background: var(--ink); color: var(--paper); }
-.icon svg { width: 96px; height: 88px; filter: drop-shadow(0 6px 10px rgba(60, 40, 20, .18)); }
-.lbl { padding: 1px 7px; border-radius: 4px; }
-.bar { position: relative; z-index: 1; text-align: center; padding: 14px 16px 18px; font-size: 14px; color: var(--ink); display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
-.bar a { text-decoration: underline; text-underline-offset: 3px; }
-.bar { align-items: center; }
-.bar .ig { display: inline-flex; text-decoration: none; transition: color .15s; }
-.bar .ig:hover { color: var(--logo-red); }
-.corner { position: absolute; top: 18px; left: 18px; z-index: 2; transition: transform .15s; }
-.corner:hover { transform: rotate(-4deg); }
-.corner img { width: 72px; height: auto; display: block; }
+/* ---------- hero ---------- */
+.hero { position: relative; min-height: 100svh; display: grid; grid-template-columns: 1fr 1.15fr; overflow: hidden; background: var(--ink); color: var(--paper); }
+.hero .photo { grid-column: 2; position: relative; }
+.hero .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.hero .cap { position: absolute; right: 7%; top: 22%; z-index: 4; text-align: left; font-size: 17px; line-height: 1.25; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+.topbar { position: absolute; inset: 0 0 auto 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; }
+.topbar img { width: 64px; height: auto; }
+.topbar nav { display: flex; gap: 22px; font-family: var(--grot); font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+.topbar nav a { text-decoration: none; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.topbar nav a:hover { color: var(--lioness); }
+.hero .swash { position: absolute; z-index: 3; left: -4vw; top: -14vw; font-family: var(--script); font-size: 62vw; line-height: 1; color: var(--lioness); pointer-events: none; }
+.hero .wordblock { position: absolute; z-index: 2; left: 20%; top: 33%; width: min(330px, 30vw); height: 30%; overflow: hidden; background: var(--girl); color: var(--ink);
+  font-family: var(--serif); font-size: 26px; line-height: 1.05; letter-spacing: .02em; padding: 6px 8px; word-break: break-all; }
+.hero .labels { position: absolute; z-index: 5; left: 12%; top: 41%; display: grid; gap: 6px; justify-items: start; }
+.hero .labels .tag { font-size: clamp(14px, 1.6vw, 21px); }
+.hero .s1, .hero .s2 { position: absolute; z-index: 5; font-size: clamp(54px, 9vw, 132px); }
+.hero .s1 { right: -1%; top: 52%; --tilt: -6deg; }
+.hero .s2 { left: 1%; top: 66%; --tilt: 4deg; font-size: clamp(40px, 6.6vw, 98px); }
 
-/* ---------- Windows ---------- */
-.win { position: fixed; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(640px, calc(100vw - 32px)); max-height: min(82vh, 820px); display: flex; flex-direction: column; background: var(--paper); border-radius: 12px; box-shadow: 0 30px 80px rgba(60,40,20,.22), 0 0 0 1.5px var(--ink); overflow: hidden; }
-.titlebar { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 13px; cursor: grab; user-select: none; touch-action: none; }
-.titlebar:active { cursor: grabbing; }
-.titlebar .close { width: 22px; height: 22px; border-radius: 50%; background: var(--pink); color: var(--ink); display: grid; place-items: center; font-size: 15px; line-height: 1; flex: none; }
-.titlebar .close:hover { background: var(--saffron); }
-.titlebar .crumbs { flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.titlebar .crumbs a { opacity: .7; }
-.titlebar .crumbs a:hover { opacity: 1; }
-.titlebar .spacer { width: 22px; flex: none; }
-.titlebar .back { width: 70px; flex: none; padding: 3px 0; border-radius: 999px; background: var(--paper); color: var(--ink); text-align: center; font-size: 12px; }
-.titlebar .back:hover { background: var(--saffron); }
-.titlebar:has(.back) .close { margin-right: 48px; }
-.pane { overflow-y: auto; padding: 0 18px 22px; }
+/* ---------- pink sky ---------- */
+.sky { position: relative; height: 62vh; min-height: 360px; display: grid; place-items: center; text-align: center;
+  background: var(--girl) url("images/desktop-bg.jpg") center 8% / 190% auto no-repeat; background-blend-mode: luminosity; }
+.sky::after { content: ""; position: absolute; inset: 0; background: var(--girl); mix-blend-mode: multiply; opacity: .35; }
+.sky > div { position: relative; z-index: 1; }
+.sky small { display: block; font-family: var(--serif); font-size: 14px; color: #fff; margin-bottom: 10px; }
+.sky .strip { font-size: clamp(26px, 3.6vw, 44px); --tilt: 2deg; }
+.sky a { text-decoration: none; }
 
-.head { text-align: center; padding-block: 30px 22px; border-bottom: 2px solid var(--ink); display: grid; gap: 10px; justify-items: center; }
-.head h2 { margin: 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(46px, 8.5vw, 74px); line-height: 1; }
-.head .mono { margin: 0; color: var(--soft); max-width: 44ch; }
-.mono { font-family: var(--mono); font-size: 13px; line-height: 1.6; letter-spacing: .02em; }
-.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--soft); }
+/* ---------- about ---------- */
+.about { position: relative; overflow: hidden; background: var(--lioness); padding: 9vw 6vw; min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: center; }
+.about .script-lines { position: absolute; inset: -4vw -6vw; display: grid; align-content: space-around; pointer-events: none; }
+.about .script-lines span { font-family: var(--script); font-size: 17vw; line-height: .95; color: var(--girl); white-space: nowrap; }
+.about .script-lines span:nth-child(2) { margin-left: -18vw; }
+.about .box { position: relative; z-index: 1; }
+.about .dark { background: var(--ink); color: var(--paper); justify-self: start; }
+.about .light { justify-self: end; align-self: end; }
+.about h2 { position: absolute; z-index: 2; left: 6vw; top: 3vw; font-size: clamp(34px, 5vw, 64px); --tilt: -3deg; }
+.about .portrait { width: 160px; aspect-ratio: 4/5; object-fit: cover; margin-bottom: 14px; border: 2px solid var(--paper); }
+.box { background: var(--paper); border: 1.5px solid var(--ink); padding: 22px 24px; max-width: 420px; font-size: 18px; line-height: 1.45; }
+.box p { margin: 0 0 .8em; } .box p:last-child { margin-bottom: 0; }
+.box a { font-weight: 600; text-underline-offset: 3px; }
 
-.rows { list-style: none; margin: 0; padding: 0; }
-.rows > li { border-bottom: 2px solid var(--ink); }
-.rows a, .rows .row { display: block; text-align: center; padding-block: 12px; font-weight: 500; font-size: clamp(24px, 4.4vw, 34px); letter-spacing: -.02em; line-height: 1.15; transition: color .2s; }
-.rows a:hover { color: var(--pink); }
-.rows .sub { display: block; font-family: var(--mono); font-weight: 400; font-size: 13px; letter-spacing: .02em; color: var(--soft); margin-top: 5px; }
-.dot { display: inline-block; width: .32em; height: .32em; border-radius: 50%; vertical-align: .32em; margin-right: .35em; background: var(--c); box-shadow: inset 0 0 0 1px rgba(22,38,42,.28); }
-.arrow { font-family: var(--mono); font-size: .45em; vertical-align: .5em; margin-left: .4em; color: var(--soft); }
+/* ---------- services ---------- */
+.services { background: var(--ink); padding: 8vw 0 9vw; overflow: hidden; }
+.services h2 { font-size: clamp(38px, 6vw, 84px); margin-left: 6vw; margin-bottom: 4vw; --tilt: -2deg; }
+.services ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.svc { background: var(--bg); color: var(--ink); transform: rotate(var(--tilt)); margin: 0 -2vw; padding: 16px 8vw; display: grid; grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr); align-items: baseline; gap: 18px; }
+.svc b { font-family: var(--grot); font-weight: 900; text-transform: uppercase; letter-spacing: -.03em; font-size: clamp(26px, 4vw, 56px); line-height: 1; }
+.svc-n { font-family: var(--mono); font-size: 13px; }
+.svc-d { font-size: 19px; font-style: italic; }
+.on-dark { color: var(--paper) !important; }
 
-.meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 2px solid var(--ink); }
-.meta div { padding: 12px 8px; text-align: center; display: grid; gap: 2px; min-width: 0; }
-.meta div + div { border-left: 2px solid var(--ink); }
-.meta span { font-family: var(--mono); font-size: 11px; color: var(--soft); letter-spacing: .06em; }
-.meta b { font-weight: 500; font-size: 15px; }
-.desc { max-width: 54ch; margin: 0 auto; padding-block: 24px 20px; display: grid; gap: 12px; font-size: 17px; line-height: 1.6; }
-.desc p { margin: 0; }
-.desc a { text-decoration: underline; text-underline-offset: 3px; }
-.did { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; padding: 0 0 24px; margin: 0; }
-.did li { font-family: var(--mono); font-size: 12px; padding: 6px 12px; border: 1.5px solid var(--ink); border-radius: 999px; }
+/* ---------- work ---------- */
+.work-intro { position: relative; overflow: hidden; background: var(--girl); padding: 9vw 6vw 7vw; }
+.work-intro .script-bg { top: -3vw; left: -2vw; font-size: 30vw; color: var(--lioness); }
+.work-intro h2 { position: relative; font-size: clamp(42px, 7vw, 104px); --tilt: -3deg; }
+.work-intro ol { position: relative; list-style: none; margin: 5vw 0 0; padding: 0; display: grid; gap: 8px; max-width: 760px; }
+.work-intro li a { display: grid; grid-template-columns: 44px auto 1fr; gap: 14px; align-items: baseline; text-decoration: none; background: var(--paper); border: 1.5px solid var(--ink); padding: 10px 16px; }
+.work-intro li a:hover { background: var(--lioness); }
+.wl-n { font-family: var(--mono); font-size: 12px; }
+.work-intro li a { font-family: var(--grot); font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: -.02em; }
+.wl-s { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 17px; text-transform: none; letter-spacing: 0; text-align: right; }
+
+.project { position: relative; overflow: hidden; background: var(--bg); padding: 7vw 6vw 8vw; }
+.project .script-bg { top: 1vw; left: 30%; font-size: 15vw; color: var(--paper); opacity: .55; }
+.p-head { position: relative; display: grid; justify-items: start; gap: 18px; margin-bottom: 4vw; }
+.p-num { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; }
+.p-head .strip { font-size: clamp(40px, 7vw, 100px); }
+.p-sub { margin: 0; font-style: italic; font-size: 21px; }
+.p-body { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4vw; align-items: start; }
+.p-info { display: grid; gap: 16px; justify-items: start; position: sticky; top: 24px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.project .box { color: var(--ink); }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { font-family: var(--mono); font-size: 12px; background: var(--ink); color: var(--paper); padding: 5px 9px; }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.gallery figure { margin: 0; position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--c) 16%, var(--paper)) 0 10px, color-mix(in srgb, var(--c) 26%, var(--paper)) 10px 20px); }
+.gallery figure { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border: 2px solid var(--ink); background: var(--paper); }
 .gallery figure.wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
-.gallery img, .gallery video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.gallery figcaption { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; background: var(--paper); padding: 3px 8px; border-radius: 999px; }
-.pager { display: flex; justify-content: space-between; gap: 12px; border-top: 2px solid var(--ink); margin-top: 22px; padding-top: 14px; font-family: var(--mono); font-size: 13px; }
-.pager a:hover { color: var(--pink); }
+.gallery img, .gallery video { width: 100%; height: 100%; object-fit: cover; }
 
-.prose { max-width: 50ch; margin: 0 auto; padding-block: 26px 6px; display: grid; gap: 14px; font-size: 17px; line-height: 1.6; text-align: center; justify-items: center; }
-.prose p { margin: 0; }
-.prose a { text-decoration: underline; text-underline-offset: 3px; }
-.portrait { margin: 0 0 6px; position: relative; width: min(260px, 70%); aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--rose) 16%, var(--paper)) 0 10px, color-mix(in srgb, var(--rose) 26%, var(--paper)) 10px 20px); }
-.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.portrait figcaption { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; background: var(--paper); padding: 3px 8px; border-radius: 999px; }
-.contact { text-align: center; padding-block: 30px 6px; display: grid; gap: 16px; justify-items: center; }
-.addr { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 5vw, 36px); user-select: all; word-break: break-all; }
-.copy { font-family: var(--mono); font-size: 13px; padding: 10px 18px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
-.copy:hover { background: var(--ink); color: var(--paper); }
-.form { max-width: 480px; margin: 26px auto 0; padding-top: 24px; border-top: 2px solid var(--ink); display: grid; gap: 14px; }
-.form .lead { margin: 0 0 4px; text-align: center; color: var(--soft); }
-.form label { display: grid; gap: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; }
-.form input, .form select, .form textarea { font: inherit; font-family: var(--sans); font-size: 16px; letter-spacing: 0; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); border-radius: 8px; padding: 10px 12px; width: 100%; }
+/* ---------- contact ---------- */
+.contact { position: relative; overflow: hidden; background: var(--sky); padding: 9vw 6vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+.contact .script-bg { top: 0; left: -3vw; font-size: 24vw; color: var(--logo-red); opacity: .9; }
+.contact .left { position: relative; display: grid; gap: 22px; justify-items: start; padding-top: 14vw; }
+.contact h2 { font-size: clamp(42px, 6vw, 88px); --tilt: -3deg; }
+.contact .lead { margin: 0; font-size: 21px; font-style: italic; }
+.addr { font-family: var(--grot); font-weight: 800; font-size: clamp(20px, 2.6vw, 34px); letter-spacing: -.02em; background: var(--paper); border: 1.5px solid var(--ink); padding: 6px 12px; word-break: break-all; }
+.copy { font-family: var(--mono); font-size: 13px; padding: 10px 18px; background: var(--ink); color: var(--paper); border: 0; cursor: pointer; }
+.copy:hover { background: var(--logo-red); }
+.form { position: relative; background: var(--paper); border: 1.5px solid var(--ink); padding: 26px; display: grid; gap: 14px; }
+.form .lead { margin: 0; font-family: var(--grot); font-weight: 900; text-transform: uppercase; font-size: 26px; letter-spacing: -.02em; }
+.form label { display: grid; gap: 6px; font-family: var(--mono); font-size: 12px; }
+.form input, .form select, .form textarea { font: inherit; font-family: var(--serif); font-size: 18px; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 0; padding: 9px 11px; width: 100%; }
 .form textarea { min-height: 120px; resize: vertical; }
-.form input:focus, .form select:focus, .form textarea:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--logo-red) 30%, transparent); }
-.form .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.form .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form .hp { position: absolute; left: -9999px; }
-.form button { justify-self: center; font-family: var(--mono); font-size: 14px; letter-spacing: .2em; padding: 12px 28px; border: 0; border-radius: 999px; background: var(--logo-red); color: #fff; cursor: pointer; }
-.form button:disabled { opacity: .6; cursor: default; }
-.form .status { margin: 0; text-align: center; font-family: var(--mono); font-size: 13px; min-height: 1.6em; }
-@media (max-width: 520px) { .form .row2 { grid-template-columns: minmax(0, 1fr); } }
+.form button { justify-self: start; font-family: var(--grot); font-weight: 900; font-size: 22px; text-transform: uppercase; letter-spacing: -.01em; padding: 8px 22px; border: 0; background: var(--logo-red); color: #fff; cursor: pointer; transform: rotate(-2deg); }
+.form button:disabled { opacity: .6; }
+.form .status { margin: 0; font-family: var(--mono); font-size: 13px; min-height: 1.4em; }
 
-@media (max-width: 520px) {
-  .meta { grid-template-columns: minmax(0, 1fr); }
-  .meta div + div { border-left: 0; border-top: 2px solid var(--ink); }
-  .gallery { grid-template-columns: minmax(0, 1fr); }
-  .icons { display: grid; grid-template-columns: repeat(2, 120px); justify-content: center; align-content: center; column-gap: 28px; row-gap: 32px; }
-  .icon { width: 120px; font-size: 14px; }
-  .icon svg { width: 80px; height: 74px; }
-  .win { max-height: calc(100% - 32px); }
-  #clock { display: none; }
-  .bar { flex-wrap: nowrap; white-space: nowrap; gap: 4px 12px; font-size: 13px; padding-inline: 8px; }
+footer { background: var(--ink); color: var(--paper); font-family: var(--grot); font-size: 14px; padding: 20px 6vw; display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; justify-content: center; }
+footer a { text-underline-offset: 3px; }
+footer .ig { display: inline-flex; }
+
+/* ---------- phones ---------- */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; grid-template-rows: 52svh 48svh; }
+  .hero .photo { grid-column: 1; grid-row: 2; }
+  .topbar nav { gap: 12px; font-size: 11px; }
+  .topbar img { width: 52px; }
+  .hero .swash { font-size: 120vw; top: -30vw; left: -10vw; }
+  .hero .wordblock { left: 34%; top: 15%; width: 52vw; height: 26svh; font-size: 20px; }
+  .hero .labels { left: 6%; top: 27svh; }
+  .hero .s1 { top: 40svh; right: -2%; font-size: 15vw; }
+  .hero .s2 { top: 50svh; font-size: 11vw; }
+  .hero .cap { top: auto; bottom: 6%; right: 6%; }
+  .about { grid-template-columns: 1fr; padding: 22vw 6vw 14vw; gap: 8vw; }
+  .about .script-lines span { font-size: 30vw; }
+  .svc { grid-template-columns: 1fr; gap: 4px; padding: 14px 8vw; }
+  .p-body { grid-template-columns: 1fr; }
+  .p-info { position: static; }
+  .project .script-bg { font-size: 28vw; left: 10%; }
+  .work-intro li a { grid-template-columns: 30px 1fr; font-size: 18px; }
+  .wl-s { grid-column: 2; text-align: left; font-size: 15px; }
+  .contact { grid-template-columns: 1fr; }
+  .contact .left { padding-top: 22vw; }
+  .contact .script-bg { font-size: 40vw; }
+  .form .row2 { grid-template-columns: 1fr; }
 }
-@media (max-width: 380px) { .bar { font-size: 12px; gap: 4px 9px; padding-inline: 4px; } .bar .ig svg { width: 16px; height: 16px; } }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
 
-<!-- ===== Splash ===== -->
-<div class="splash" data-scene="splash">
-  <div class="door"><h1><img src="images/logo.webp" alt="STUDIO51" width="778" height="813"></h1><a class="enter" href="#desktop">ENTER</a></div>
-  <footer>By Sophie Berry · Tulsa, Oklahoma</footer>
-</div>
+<section class="hero" id="top">
+  <div class="topbar">
+    <a href="#top" aria-label="STUDIO51"><img src="images/logo.webp" alt="STUDIO51" width="778" height="813"></a>
+    <nav aria-label="Sections"><a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+  </div>
+  <span class="swash" aria-hidden="true">S</span>
+  <div class="wordblock" aria-hidden="true">WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · WEBSITE DESIGN · PODCAST PRODUCTION · PROJECT MANAGEMENT · MARKETING STRATEGY · CONTENT CREATION · SOCIAL MANAGEMENT · </div>
+  <div class="labels"><span class="tag">BY SOPHIE BERRY</span><span class="tag">TULSA, OK · WORLDWIDE</span></div>
+  <div class="photo"><img src="images/sophie.jpg" alt="Sophie Berry"></div>
+  <p class="cap">All-in-one<br><b>creative studio</b></p>
+  <h1 class="strip s1">STUDIO51</h1>
+  <p class="strip s2">Creative studio</p>
+</section>
 
-<!-- ===== Desktop ===== -->
-<div class="desktop" data-scene="desktop" hidden>
-  <a class="corner" href="#" aria-label="Back to the STUDIO51 landing page"><img src="images/logo.webp" alt="" width="778" height="813"></a>
-  <nav class="icons" aria-label="STUDIO51">
-    <a class="icon" href="#about">
-      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#C9327C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EB4697"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F27BB5"/><text x="48" y="72" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="52" fill="#FFFCF4">&#8220;</text></svg>
-      <span class="lbl">About</span>
-    </a>
-    <a class="icon" href="#services">
-      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#D7742C"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#EE9147"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#F4B07A"/><g transform="translate(48 53)" fill="none" stroke="#FFFCF4" stroke-width="2.4"><rect x="-11" y="-11" width="22" height="22" transform="rotate(45)"/><circle r="3.2" fill="#FFFCF4" stroke="none"/></g></svg>
-      <span class="lbl">Services</span>
-    </a>
-    <a class="icon" href="#work">
-      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#9F1F21"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#C42B2D"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#D9605F"/><g fill="none" stroke="#FFFCF4" stroke-width="2.4"><rect x="34" y="42" width="28" height="22" rx="2"/><path d="M41 42v-4h14v4M34 51h28"/></g></svg>
-      <span class="lbl">Selected Work</span>
-    </a>
-    <a class="icon" href="#contact">
-      <svg viewBox="0 0 96 88" aria-hidden="true"><path d="M6 18a5 5 0 0 1 5-5h22l7 7h45a5 5 0 0 1 5 5v6H6z" fill="#807A2B"/><rect x="6" y="24" width="84" height="56" rx="5" fill="#9E973A"/><rect x="6" y="24" width="84" height="5" rx="2.5" fill="#BDB766"/><g fill="none" stroke="#FFFCF4" stroke-width="2.4" stroke-linejoin="round"><rect x="33" y="42" width="30" height="21" rx="2"/><path d="M33 44l15 10 15-10"/></g></svg>
-      <span class="lbl">Contact</span>
-    </a>
-  </nav>
-  <div class="bar"><span>STUDIO51</span><span>Tulsa, OK<span id="clock"></span></span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a><a class="ig" href="https://www.instagram.com/studio51media" target="_blank" rel="noopener" aria-label="STUDIO51 on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div>
-</div>
+<section class="sky">
+  <div><small>scroll to meet the studio</small><a href="#about" class="strip">Meet the studio</a></div>
+</section>
 
-<!-- ===== Windows ===== -->
-<section class="win" data-win="about" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">About</span><span class="spacer"></span></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / about</span><h2>About</h2></header>
-    <div class="prose">
-      <figure class="portrait"><img src="images/sophie.jpg" alt="Sophie Berry"></figure>
-      <p>STUDIO51 is an all-in-one creative studio by Sophie Berry, working from Tulsa with clients worldwide.</p>
-      <p>With a background in international business, management information systems and Chinese, and time spent at a creative agency in New York, I bring the business, technical and creative sides to every project.</p>
-      <p>Have something in mind? <a href="#contact">Let’s talk →</a></p>
+<section class="about" id="about">
+  <div class="script-lines" aria-hidden="true"><span>studio51 ✳ studio</span><span>creative ✳ media ✳</span><span>all-in-one ✳ Tulsa</span></div>
+  <h2 class="strip">About</h2>
+  <div class="box dark"><img class="portrait" src="images/sophie.jpg" alt=""><p>STUDIO51 is an all-in-one creative studio by Sophie Berry, working from Tulsa with clients worldwide.</p></div>
+  <div class="box light"><p>With a background in international business, management information systems and Chinese, and time spent at a creative agency in New York, I bring the business, technical and creative sides to every project.</p><p>Have something in mind? <a href="#contact">Let’s talk →</a></p></div>
+</section>
+
+<section class="services" id="services">
+  <h2 class="strip">Services</h2>
+  <ul><li class="svc " style="--bg:var(--fanta); --tilt:-1.1deg"><span class="svc-n">01</span><b>Website Design</b><span class="svc-d">portfolio and brand sites that are easy to keep up</span></li><li class="svc on-dark" style="--bg:var(--olive); --tilt:0.9deg"><span class="svc-n">02</span><b>Podcast Production</b><span class="svc-d">guest prep, run-of-show, studio days, clips, distribution</span></li><li class="svc " style="--bg:var(--lioness); --tilt:-1.1deg"><span class="svc-n">03</span><b>Project Management</b><span class="svc-d">timelines, vendors, shoots and launches, kept on track</span></li><li class="svc on-dark" style="--bg:var(--strawb); --tilt:0.9deg"><span class="svc-n">04</span><b>Marketing Strategy</b><span class="svc-d">positioning, launch plans, content calendars</span></li><li class="svc " style="--bg:var(--girl); --tilt:-1.1deg"><span class="svc-n">05</span><b>Content Creation</b><span class="svc-d">short-form video, photo direction, scripts, copy</span></li><li class="svc " style="--bg:var(--wave); --tilt:0.9deg"><span class="svc-n">06</span><b>Social Management</b><span class="svc-d">posting, community, reporting, live event coverage</span></li></ul>
+</section>
+
+<section class="work-intro" id="work">
+  <p class="script-bg" aria-hidden="true">selected work</p>
+  <h2 class="strip">Selected work</h2>
+  <ol><li><a href="#rounds"><span class="wl-n">01</span>Rounds<span class="wl-s">podcast production</span></a></li><li><a href="#moffett"><span class="wl-n">02</span>Matt Moffett<span class="wl-s">website design</span></a></li><li><a href="#athlos"><span class="wl-n">03</span>ATHLOS<span class="wl-s">live social</span></a></li><li><a href="#alexis"><span class="wl-n">04</span>Alexis Ohanian<span class="wl-s">content strategy &amp; social</span></a></li><li><a href="#spicewheel"><span class="wl-n">05</span>Spice Wheel<span class="wl-s">social · content · video</span></a></li><li><a href="#jack"><span class="wl-n">06</span>Jack Alexander<span class="wl-s">book editing and production</span></a></li><li><a href="#desiwok"><span class="wl-n">07</span>Desi Wok<span class="wl-s">social content &amp; influencers</span></a></li></ol>
+</section>
+
+<section class="project on-dark" id="rounds" style="--bg:var(--olive); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">Rounds</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 01</span>
+    <h3 class="strip" style="--tilt:-2.2deg">Rounds</h3>
+    <p class="p-sub">where healthcare meets wall street</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Producer</span><span class="tag">NYC</span></div>
+      <div class="box"><p>End-to-end production for a video podcast on health tech and investing, presented by Silicon Valley Bank and hosted by Christina Farr and Stephanie Davis. Prepped guests and talking points, built each run-of-show, ran studio days in New York, and turned every episode into clips and social posts.</p><p>Guests included leaders from Midi Health, Rock Health Advisory, Aidoc, Oxeon, Grow Therapy and Talkspace.</p></div>
+      <ul class="chips"><li>guest prep</li><li>run-of-show</li><li>studio days</li><li>clips &amp; social posts</li><li>linkedin &amp; youtube</li></ul>
     </div>
-  </div>
-</section>
-
-<section class="win" data-win="services" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Services</span><span class="spacer"></span></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / services</span><h2>Services</h2></header>
-    <ul class="rows">
-      <li><div class="row" style="--c:var(--saffron)"><span class="dot"></span>Website Design<span class="sub">portfolio and brand sites that are easy to keep up</span></div></li>
-      <li><div class="row" style="--c:var(--teal)"><span class="dot"></span>Podcast Production<span class="sub">guest prep, run-of-show, studio days, clips, distribution</span></div></li>
-      <li><div class="row" style="--c:var(--cobalt)"><span class="dot"></span>Project Management<span class="sub">timelines, vendors, shoots and launches, kept on track</span></div></li>
-      <li><div class="row" style="--c:var(--berry)"><span class="dot"></span>Marketing Strategy<span class="sub">positioning, launch plans, content calendars</span></div></li>
-      <li><div class="row" style="--c:var(--rose)"><span class="dot"></span>Content Creation<span class="sub">short-form video, photo direction, scripts, copy</span></div></li>
-      <li><div class="row" style="--c:var(--plum)"><span class="dot"></span>Social Management<span class="sub">posting, community, reporting, live event coverage</span></div></li>
-    </ul>
-  </div>
-</section>
-
-<section class="win" data-win="work" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Selected Work</span><span class="spacer"></span></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work</span><h2>Work</h2><p class="mono">select a project</p></header>
-    <ul class="rows">
-      <li><a href="#rounds" style="--c:var(--teal)"><span class="dot"></span>Rounds<span class="arrow">↗</span><span class="sub">podcast production</span></a></li>
-      <li><a href="#moffett" style="--c:var(--saffron)"><span class="dot"></span>Matt Moffett<span class="arrow">↗</span><span class="sub">website design</span></a></li>
-      <li><a href="#athlos" style="--c:var(--plum)"><span class="dot"></span>ATHLOS<span class="arrow">↗</span><span class="sub">live social</span></a></li>
-      <li><a href="#alexis" style="--c:var(--lilac)"><span class="dot"></span>Alexis Ohanian<span class="arrow">↗</span><span class="sub">content strategy &amp; social</span></a></li>
-      <li><a href="#spicewheel" style="--c:var(--rose)"><span class="dot"></span>Spice Wheel<span class="arrow">↗</span><span class="sub">social · content · video</span></a></li>
-      <li><a href="#jack" style="--c:var(--berry)"><span class="dot"></span>Jack Alexander<span class="arrow">↗</span><span class="sub">book editing and production</span></a></li>
-      <li><a href="#desiwok" style="--c:var(--cobalt)"><span class="dot"></span>Desi Wok<span class="arrow">↗</span><span class="sub">social content &amp; influencers</span></a></li>
-    </ul>
-  </div>
-</section>
-
-<section class="win" data-win="rounds" style="--c:var(--teal)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Rounds</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 01</span><h2>Rounds</h2><p class="mono">where healthcare meets wall street</p></header>
-    <div class="meta"><div><span>role</span><b>Producer</b></div><div><span>where</span><b>NYC</b></div></div>
-    <div class="desc"><p>End-to-end production for a video podcast on health tech and investing, presented by Silicon Valley Bank and hosted by Christina Farr and Stephanie Davis. Prepped guests and talking points, built each run-of-show, ran studio days in New York, and turned every episode into clips and social posts.</p><p>Guests included leaders from Midi Health, Rock Health Advisory, Aidoc, Oxeon, Grow Therapy and Talkspace.</p></div>
-    <ul class="did"><li>guest prep</li><li>run-of-show</li><li>studio days</li><li>clips &amp; social posts</li><li>linkedin &amp; youtube</li></ul>
     <div class="gallery"><figure class="wide"><video src="videos/rounds-02.mp4" poster="images/rounds-02-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Rounds episode footage: host and guest at the mics in the studio"></video></figure><figure><img src="images/rounds-01.jpg" alt="Two Rounds episodes in the studio, hosts and guests at the mics"></figure><figure><video src="videos/rounds-01.mp4" poster="images/rounds-01-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Rounds social clip with captions"></video></figure></div>
-    <nav class="pager"><a href="#work">← all work</a><a href="#moffett">next: matt moffett →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="moffett" style="--c:var(--saffron)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Matt Moffett</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 02</span><h2>Matt Moffett</h2><p class="mono">portfolio site for a tulsa artist</p></header>
-    <div class="meta"><div><span>role</span><b>Design &amp; build</b></div><div><span>where</span><b>Tulsa</b></div></div>
-    <div class="desc"><p>A home for Matt's paintings, mosaics, sculptures and prints. Every piece shows full size, with what's available listed first and sold work kept on view.</p><p>The site is built from custom HTML and hosted on GitHub Pages, with a simple dashboard built on Pages CMS so Matt can add new work himself.</p></div>
-    <ul class="did"><li>web design</li><li>custom html</li><li>github pages</li><li>pages cms dashboard</li></ul>
+<section class="project " id="moffett" style="--bg:var(--fanta); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">Matt Moffett</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 02</span>
+    <h3 class="strip" style="--tilt:1.8deg">Matt Moffett</h3>
+    <p class="p-sub">portfolio site for a tulsa artist</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Design &amp; build</span><span class="tag">Tulsa</span></div>
+      <div class="box"><p>A home for Matt's paintings, mosaics, sculptures and prints. Every piece shows full size, with what's available listed first and sold work kept on view.</p><p>The site is built from custom HTML and hosted on GitHub Pages, with a simple dashboard built on Pages CMS so Matt can add new work himself.</p></div>
+      <ul class="chips"><li>web design</li><li>custom html</li><li>github pages</li><li>pages cms dashboard</li></ul>
+    </div>
     <div class="gallery"><figure class="wide" style="aspect-ratio: 1966 / 1602"><img src="images/moffett-home.jpg" alt="Homepage of Matt Moffett's website: Enter into a land of whimsy. Loose, magical, realism."></figure><figure><img src="images/moffett-02.jpg" alt="Painting of a villa and its gardens, with a fountain and pond"></figure><figure><img src="images/moffett-03.jpg" alt="Painting of a polar bear in a tiara and a walrus in a jeweled crown, with a bear, a cow and a leopard"></figure></div>
-    <nav class="pager"><a href="#rounds">← rounds</a><a href="#athlos">next: athlos →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="athlos" style="--c:var(--plum)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / ATHLOS</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 03</span><h2>ATHLOS</h2><p class="mono">creative strategy &amp; live social for the women's track meet</p></header>
-    <div class="meta"><div><span>role</span><b>Creative strategy, social &amp; media management</b></div><div><span>where</span><b>New York · London</b></div></div>
-    <div class="desc"><p><b>ATHLOS 2024:</b> Led creative strategy and content development across social for ATHLOS NYC 2024, managed the content calendar, built relationships with athletes and partners, and coordinated pre- and post-production for content shoots.</p><p>Partnerships managed included Toyota, Spectrum, WYN Beauty and Megan Thee Stallion.</p><p>ATHLOS NYC 2024 was a Shorty Awards finalist in the Real-Time Response and Event &amp; Experiential categories.</p><p><b>ATHLOS NYC 2025 and ATHLOS LDN 2026:</b> On-site media manager directing live EVS clipping from the broadcast truck, calling key moments as they happened so the social team could edit while the meet was still running, and co-managed live posting to amplify athlete moments and fan engagement in real time.</p></div>
-    <ul class="did"><li>creative strategy</li><li>content calendar</li><li>partnerships</li><li>shoot production</li><li>EVS direction</li><li>real-time social</li></ul>
+<section class="project " id="athlos" style="--bg:var(--wave); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">ATHLOS</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 03</span>
+    <h3 class="strip" style="--tilt:-2.2deg">ATHLOS</h3>
+    <p class="p-sub">creative strategy &amp; live social for the women's track meet</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Creative strategy, social &amp; media management</span><span class="tag">New York · London</span></div>
+      <div class="box"><p><b>ATHLOS 2024:</b> Led creative strategy and content development across social for ATHLOS NYC 2024, managed the content calendar, built relationships with athletes and partners, and coordinated pre- and post-production for content shoots.</p><p>Partnerships managed included Toyota, Spectrum, WYN Beauty and Megan Thee Stallion.</p><p>ATHLOS NYC 2024 was a Shorty Awards finalist in the Real-Time Response and Event &amp; Experiential categories.</p><p><b>ATHLOS NYC 2025 and ATHLOS LDN 2026:</b> On-site media manager directing live EVS clipping from the broadcast truck, calling key moments as they happened so the social team could edit while the meet was still running, and co-managed live posting to amplify athlete moments and fan engagement in real time.</p></div>
+      <ul class="chips"><li>creative strategy</li><li>content calendar</li><li>partnerships</li><li>shoot production</li><li>EVS direction</li><li>real-time social</li></ul>
+    </div>
     <div class="gallery"><figure><img src="images/athlos-01.jpg" alt="Sprinter lifting the ATHLOS London 2026 crown"></figure><figure><img src="images/athlos-02.jpg" alt="Broadcast truck multiviewer and EVS controller during ATHLOS"></figure></div>
-    <nav class="pager"><a href="#moffett">← matt moffett</a><a href="#alexis">next: alexis ohanian →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="alexis" style="--c:var(--lilac)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Alexis Ohanian</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 04</span><h2>Alexis Ohanian</h2><p class="mono">content strategy &amp; social for the co-founder of reddit</p></header>
-    <div class="meta"><div><span>role</span><b>Content strategy &amp; social</b></div><div><span>where</span><b>NYC</b></div></div>
-    <div class="desc"><p>Managed content strategy and social execution for Alexis Ohanian, co-founder of Reddit.</p><p>This included developing high-impact narratives, producing culturally relevant content, running the content calendar, and keeping the messaging aligned with his investments, values and public presence.</p></div>
-    <ul class="did"><li>content strategy</li><li>narrative development</li><li>content production</li><li>content calendar</li><li>social execution</li></ul>
+<section class="project " id="alexis" style="--bg:var(--lilac); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">Alexis Ohanian</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 04</span>
+    <h3 class="strip" style="--tilt:1.8deg">Alexis Ohanian</h3>
+    <p class="p-sub">content strategy &amp; social for the co-founder of reddit</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Content strategy &amp; social</span><span class="tag">NYC</span></div>
+      <div class="box"><p>Managed content strategy and social execution for Alexis Ohanian, co-founder of Reddit.</p><p>This included developing high-impact narratives, producing culturally relevant content, running the content calendar, and keeping the messaging aligned with his investments, values and public presence.</p></div>
+      <ul class="chips"><li>content strategy</li><li>narrative development</li><li>content production</li><li>content calendar</li><li>social execution</li></ul>
+    </div>
     <div class="gallery"><figure class="wide" style="aspect-ratio: 1 / 1"><img src="images/alexis-grid.jpg" alt="Grid of Alexis Ohanian social posts with view counts up to 2.5M"></figure><figure><img src="images/alexis-02.jpg" alt="Sophie and Alexis Ohanian reviewing content on a laptop"></figure><figure><video src="videos/alexis-02.mp4" poster="images/alexis-02-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Alexis Ohanian social clip"></video></figure></div>
-    <nav class="pager"><a href="#athlos">← athlos</a><a href="#spicewheel">next: spice wheel →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="spicewheel" style="--c:var(--rose)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Spice Wheel</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 05</span><h2>Spice Wheel</h2><p class="mono">social, content &amp; video for a masala dabba brand</p></header>
-    <div class="meta"><div><span>role</span><b>Social, content &amp; video</b></div><div><span>channels</span><b>TikTok, Instagram, Facebook, Pinterest, YouTube</b></div></div>
-    <div class="desc"><p>Social management for Spice Wheel, a masala dabba brand, plus content and video produced end to end, from scripting through filming, editing and posting.</p></div>
-    <ul class="did"><li>social management</li><li>scripting</li><li>filming</li><li>editing</li></ul>
+<section class="project " id="spicewheel" style="--bg:var(--girl); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">Spice Wheel</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 05</span>
+    <h3 class="strip" style="--tilt:-2.2deg">Spice Wheel</h3>
+    <p class="p-sub">social, content &amp; video for a masala dabba brand</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Social, content &amp; video</span><span class="tag">TikTok, Instagram, Facebook, Pinterest, YouTube</span></div>
+      <div class="box"><p>Social management for Spice Wheel, a masala dabba brand, plus content and video produced end to end, from scripting through filming, editing and posting.</p></div>
+      <ul class="chips"><li>social management</li><li>scripting</li><li>filming</li><li>editing</li></ul>
+    </div>
     <div class="gallery"><figure class="wide" style="aspect-ratio: 1338 / 1186"><img src="images/spicewheel-grid.jpg" alt="Grid of Spice Wheel social posts: the gift box, kitchen videos and the history of the masala dabba"></figure><figure><video src="videos/spicewheel-01.mp4" poster="images/spicewheel-01-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Spice Wheel video: spooning turmeric and coriander from a masala dabba"></video></figure><figure><img src="images/spicewheel-02.jpg" alt="Spice Wheel masala dabba held over a flower bed, filled with whole and ground spices"></figure></div>
-    <nav class="pager"><a href="#alexis">← alexis ohanian</a><a href="#jack">next: jack alexander →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="jack" style="--c:var(--berry)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Jack Alexander</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 06</span><h2>Jack Alexander</h2><p class="mono">a coffee table book for tulsa collectors</p></header>
-    <div class="meta"><div><span>role</span><b>Book designer &amp; producer</b></div><div><span>where</span><b>Tulsa</b></div></div>
-    <div class="desc"><p>Produced and edited a coffee table book for Tulsa art collectors Jack and Jan Alexander, documenting their personal collection of more than 2,000 works of art.</p><p>The book is both an archive and a love letter to a lifetime of collecting, capturing the depth behind one of Tulsa’s most remarkable private collections.</p></div>
-    <ul class="did"><li>book production</li><li>editing</li><li>art direction</li><li>print production</li></ul>
+<section class="project on-dark" id="jack" style="--bg:var(--strawb); --strip:var(--lioness)">
+  <p class="script-bg" aria-hidden="true">Jack Alexander</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 06</span>
+    <h3 class="strip" style="--tilt:1.8deg">Jack Alexander</h3>
+    <p class="p-sub">a coffee table book for tulsa collectors</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Book designer &amp; producer</span><span class="tag">Tulsa</span></div>
+      <div class="box"><p>Produced and edited a coffee table book for Tulsa art collectors Jack and Jan Alexander, documenting their personal collection of more than 2,000 works of art.</p><p>The book is both an archive and a love letter to a lifetime of collecting, capturing the depth behind one of Tulsa’s most remarkable private collections.</p></div>
+      <ul class="chips"><li>book production</li><li>editing</li><li>art direction</li><li>print production</li></ul>
+    </div>
     <div class="gallery"><figure><img src="images/jack-01.jpg" alt="Silhouette of two people on a beach, from the Jack Alexander book"></figure><figure><video src="videos/jack-01.mp4" poster="images/jack-01-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Sneak peek inside the Alexander home and collection, Tulsa"></video></figure></div>
-    <nav class="pager"><a href="#spicewheel">← spice wheel</a><a href="#desiwok">next: desi wok →</a></nav>
   </div>
 </section>
-
-<section class="win" data-win="desiwok" style="--c:var(--cobalt)" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs"><a href="#work">Selected Work</a> / Desi Wok</span><a class="back" href="#work">← back</a></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / work / 07</span><h2>Desi Wok</h2><p class="mono">social content &amp; influencers</p></header>
-    <div class="meta"><div><span>role</span><b>Social content &amp; influencers</b></div><div><span>where</span><b>Tulsa</b></div></div>
-    <div class="desc"><p>Created a summer social content bundle for Desi Wok to grow awareness and sales through the season.</p><p>Alongside organic social, managed influencer content that put Desi Wok in front of thousands of new customers.</p></div>
-    <ul class="did"><li>social content</li><li>influencer marketing</li><li>seasonal campaign</li></ul>
+<section class="project " id="desiwok" style="--bg:var(--lioness); --strip:var(--girl)">
+  <p class="script-bg" aria-hidden="true">Desi Wok</p>
+  <header class="p-head">
+    <span class="p-num">51 / work / 07</span>
+    <h3 class="strip" style="--tilt:-2.2deg">Desi Wok</h3>
+    <p class="p-sub">social content &amp; influencers</p>
+  </header>
+  <div class="p-body">
+    <div class="p-info">
+      <div class="tags"><span class="tag">Social content &amp; influencers</span><span class="tag">Tulsa</span></div>
+      <div class="box"><p>Created a summer social content bundle for Desi Wok to grow awareness and sales through the season.</p><p>Alongside organic social, managed influencer content that put Desi Wok in front of thousands of new customers.</p></div>
+      <ul class="chips"><li>social content</li><li>influencer marketing</li><li>seasonal campaign</li></ul>
+    </div>
     <div class="gallery"><figure class="wide" style="aspect-ratio: 2000 / 1376"><img src="images/desiwok-grid.jpg" alt="Grid of Desi Wok TikTok posts with view counts, up to 84.6K"></figure><figure><video src="videos/desiwok-01.mp4" poster="images/desiwok-01-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Desi Wok summer menu video: tandoor plate, chili garlic noodles, piña colada masala"></video></figure><figure><video src="videos/desiwok-02.mp4" poster="images/desiwok-02-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Influencer video: first time trying Desi Wok"></video></figure></div>
-    <nav class="pager"><a href="#jack">← jack alexander</a><a href="#work">all work →</a></nav>
   </div>
 </section>
 
-<section class="win" data-win="contact" hidden>
-  <div class="titlebar"><a class="close" href="#desktop" aria-label="Close">×</a><span class="crumbs">Contact</span><span class="spacer"></span></div>
-  <div class="pane">
-    <header class="head"><span class="kicker">51 / contact</span><h2>Contact</h2><p class="mono">tell me what you're working on and when you need it</p></header>
-    <div class="contact"><span class="addr" id="addr">sophienberry@gmail.com</span><button class="copy" id="copyBtn" type="button">copy email</button></div>
-    <form class="form" id="inquiry" action="https://formsubmit.co/sophienberry@gmail.com" method="POST">
+<section class="contact" id="contact">
+  <p class="script-bg" aria-hidden="true">let’s talk</p>
+  <div class="left">
+    <h2 class="strip">Contact</h2>
+    <p class="lead">tell me what you're working on and when you need it</p>
+    <span class="addr" id="addr">sophienberry@gmail.com</span>
+    <button class="copy" id="copyBtn" type="button">copy email</button>
+  </div>
+  <form class="form" id="inquiry" action="https://formsubmit.co/sophienberry@gmail.com" method="POST">
       <p class="mono lead">or send a request</p>
       <div class="row2">
         <label>name<input name="name" autocomplete="name" required></label>
@@ -371,31 +370,23 @@ a { color: inherit; text-decoration: none; }
       <button type="submit">SEND</button>
       <p class="status" id="formStatus" role="status"></p>
     </form>
-  </div>
 </section>
 
+<footer>
+  <span>STUDIO51 LLC</span><span>Tulsa, OK<span id="clock"></span></span><a href="#contact">Email</a><a href="Sophie_Berry_Resume.pdf" target="_blank" rel="noopener">Sophie Berry Full Resume</a>
+  <a class="ig" href="https://www.instagram.com/studio51media" target="_blank" rel="noopener" aria-label="STUDIO51 on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+</footer>
+
 <script>
-// ---- Routing: splash, desktop, and windows on top of the desktop ----
-const scenes=[...document.querySelectorAll('[data-scene]')],wins=[...document.querySelectorAll('[data-win]')];
-function route(){
-  const h=(location.hash||'').slice(1),win=wins.find(w=>w.dataset.win===h);
-  const scene=(h==='desktop'||win)?'desktop':'splash';
-  scenes.forEach(s=>s.hidden=s.dataset.scene!==scene);
-  wins.forEach(w=>{w.hidden=w!==win;if(w===win){w.style.left='';w.style.top='';w.style.transform='';w.querySelector('.pane').scrollTop=0}});
-}
-addEventListener('hashchange',route);
-
-// ---- Drag windows by their title bar ----
-wins.forEach(w=>{
-  const bar=w.querySelector('.titlebar');let sx,sy,ox,oy,drag=false;
-  bar.addEventListener('pointerdown',e=>{if(e.target.closest('a'))return;const r=w.getBoundingClientRect();drag=true;sx=e.clientX;sy=e.clientY;ox=r.left;oy=r.top;w.style.transform='none';w.style.left=ox+'px';w.style.top=oy+'px';bar.setPointerCapture(e.pointerId)});
-  bar.addEventListener('pointermove',e=>{if(!drag)return;const nx=Math.min(Math.max(ox+e.clientX-sx,80-w.offsetWidth),innerWidth-80),ny=Math.min(Math.max(oy+e.clientY-sy,8),innerHeight-48);w.style.left=nx+'px';w.style.top=ny+'px'});
-  bar.addEventListener('pointerup',()=>drag=false);
-});
-
 // ---- Clock ----
 function clock(){document.getElementById('clock').textContent=' · '+new Date().toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}
 clock();setInterval(clock,30000);
+
+// ---- Only play videos that are on screen ----
+const vids=[...document.querySelectorAll('.gallery video')];
+vids.forEach(v=>{v.removeAttribute('autoplay');v.pause()});
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause()),{threshold:.25});
+vids.forEach(v=>io.observe(v));
 
 // ---- Copy email ----
 document.getElementById('copyBtn').addEventListener('click',()=>{
@@ -414,8 +405,6 @@ document.getElementById('inquiry').addEventListener('submit',e=>{
     .catch(()=>{st.textContent='something went wrong. please email me directly.'})
     .finally(()=>{btn.disabled=false});
 });
-
-route();
 </script>
 </body>
 </html>
