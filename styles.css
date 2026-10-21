@@ -228,9 +228,8 @@ footer .ig { display: inline-flex; }
 .about h2 { --strip: var(--paper); }
 .project .box { max-width: none; }
 
-/* home hero: logo-blue panel, 60/40 split with the photo */
-.hero { grid-template-columns: 3fr 2fr; background: var(--sky); color: var(--ink); }
-.hero .swash { color: var(--girl); }
+/* home hero: 60/40 split with the photo */
+.hero { grid-template-columns: 3fr 2fr; }
 
 /* work page: description beside the heading, media in one even row */
 .p-top { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3vw; align-items: start; margin-bottom: 3vw; }
