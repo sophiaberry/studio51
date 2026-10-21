@@ -3,7 +3,7 @@ function clock(){document.getElementById('clock').textContent=' · '+new Date().
 clock();setInterval(clock,30000);
 
 // ---- Only play videos that are on screen ----
-const vids=[...document.querySelectorAll('.gallery video')];
+const vids=[...document.querySelectorAll('.filmstrip video')];
 vids.forEach(v=>{v.removeAttribute('autoplay');v.pause()});
 const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause()),{threshold:.25});
 vids.forEach(v=>io.observe(v));
