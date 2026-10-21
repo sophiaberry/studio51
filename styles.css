@@ -377,3 +377,5 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 /* home work preview: white card borders */
 .cards a { background: #fff; border-color: #fff; }
 .card-img { border-color: #fff; }
+.m-br { display: none; }
+@media (max-width: 760px) { .m-br { display: inline; } }
