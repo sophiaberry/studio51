@@ -361,3 +361,8 @@ body.pop-open { overflow: hidden; }
 .cta .script-bg { color: var(--sky); opacity: .9; }
 .cta .lead { background: var(--logo-red); color: var(--sky); border-color: var(--sky); }
 .cta .btn-red { background: var(--sky); color: var(--logo-red); border-color: var(--sky); }
+
+/* home: the blue bar stays hidden until you scroll */
+.pagebar.float { position: fixed; inset: 0 0 auto 0; z-index: 50; transform: translateY(-105%); transition: transform .3s ease; }
+.pagebar.float.show { transform: none; }
+body:has(.pagebar.float) .hero { min-height: 100svh; }

@@ -35,3 +35,7 @@ pops.forEach(d=>{
   d.addEventListener('close',()=>{document.body.classList.remove('pop-open');if(location.hash==='#'+d.id)history.pushState('',document.title,location.pathname)});
 });
 if(pops.length){addEventListener('hashchange',openPop);openPop()}
+
+// ---- Home: reveal the top bar once you scroll ----
+const floatBar=document.querySelector('.pagebar.float');
+if(floatBar){const t=()=>floatBar.classList.toggle('show',scrollY>120);addEventListener('scroll',t,{passive:true});t()}
