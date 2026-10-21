@@ -228,8 +228,8 @@ footer .ig { display: inline-flex; }
 .about h2 { --strip: var(--paper); }
 .project .box { max-width: none; }
 
-/* home hero: 60/40 split with the photo */
-.hero { grid-template-columns: 3fr 2fr; }
+/* home hero: 50/50 split with the photo */
+.hero { grid-template-columns: 1fr 1fr; }
 
 /* work page: description beside the heading, media in one even row */
 .p-top { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3vw; align-items: start; margin-bottom: 3vw; }
@@ -264,3 +264,10 @@ footer .ig { display: inline-flex; }
   .cards a { align-content: start; }
   .cards b { font-size: 19px; }
 }
+
+/* home: selected work scrolls sideways on every screen size */
+.cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; max-width: none; width: calc(100% + 6vw); margin-right: -6vw; padding: 4px 6vw 16px 0; scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
+.cards li { flex: 0 0 300px; scroll-snap-align: start; }
+.cards::-webkit-scrollbar { height: 8px; }
+.cards::-webkit-scrollbar-thumb { background: var(--ink); }
+@media (max-width: 760px) { .cards { width: 100%; margin-right: 0; } .cards li { flex-basis: 68vw; } }
