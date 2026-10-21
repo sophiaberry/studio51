@@ -366,3 +366,6 @@ body.pop-open { overflow: hidden; }
 .pagebar.float { position: fixed; inset: 0 0 auto 0; z-index: 50; transform: translateY(-105%); transition: transform .3s ease; }
 .pagebar.float.show { transform: none; }
 body:has(.pagebar.float) .hero { min-height: 100svh; }
+
+/* selected work previews: square images */
+.wthumb, .card-img { aspect-ratio: 1 / 1; }
