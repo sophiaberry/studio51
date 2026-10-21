@@ -369,3 +369,7 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 
 /* selected work previews: square images */
 .wthumb, .card-img { aspect-ratio: 1 / 1; }
+
+/* work grid type matches the services list */
+.wclient { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 19px; text-transform: none; }
+.wtitle { font-family: var(--grot); font-weight: 900; text-transform: uppercase; letter-spacing: -.03em; line-height: 1; font-size: clamp(26px, 2.8vw, 42px); }
