@@ -271,3 +271,29 @@ footer .ig { display: inline-flex; }
 .cards::-webkit-scrollbar { height: 8px; }
 .cards::-webkit-scrollbar-thumb { background: var(--ink); }
 @media (max-width: 760px) { .cards { width: 100%; margin-right: 0; } .cards li { flex-basis: 68vw; } }
+
+/* home: the blue page bar sits above the hero */
+.hero { min-height: calc(100svh - 86px); }
+.hero .swash { top: -10vw; }
+
+/* ---------- work page: one clean column per project ---------- */
+.project { padding: 6vw 0; }
+.p-wrap { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 6vw; display: grid; gap: 22px; box-sizing: content-box; }
+.p-wrap > .strip { justify-self: start; white-space: nowrap; font-size: clamp(34px, 5vw, 68px); }
+.p-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.p-meta { display: grid; gap: 14px; justify-items: start; }
+.p-meta .p-sub { font-size: 21px; }
+.p-cols .box { max-width: none; margin: 0; }
+.project .script-bg { left: auto; right: -2vw; top: 2vw; }
+.filmstrip { width: 100%; display: flex; gap: 10px; margin-top: 8px; }
+.filmstrip figure { flex: var(--r) 1 0; min-width: 0; aspect-ratio: var(--r); }
+.filmstrip figure.p img, .filmstrip figure.p video { object-position: center 25%; }
+@media (max-width: 760px) {
+  .project { padding: 12vw 0; }
+  .p-wrap { padding: 0 6vw; gap: 16px; }
+  .p-wrap > .strip { font-size: 9vw; }
+  .p-cols { grid-template-columns: 1fr; gap: 16px; }
+  .filmstrip { flex-wrap: wrap; }
+  .filmstrip figure.w { flex: 1 1 100%; aspect-ratio: var(--r); }
+  .filmstrip figure.p { flex: 1 1 calc(50% - 5px); aspect-ratio: 4 / 5; }
+}
