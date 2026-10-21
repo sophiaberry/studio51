@@ -25,3 +25,13 @@ document.getElementById('inquiry')?.addEventListener('submit',e=>{
     .catch(()=>{st.textContent='something went wrong. please email me directly.'})
     .finally(()=>{btn.disabled=false});
 });
+
+// ---- Work page: open a project in a pop-up ----
+const pops=[...document.querySelectorAll('dialog.pop')];
+function openPop(){const d=pops.find(p=>'#'+p.id===location.hash);pops.forEach(p=>{if(p!==d&&p.open)p.close()});if(d&&!d.open){d.showModal();d.scrollTop=0;document.body.classList.add('pop-open')}}
+pops.forEach(d=>{
+  d.querySelector('.pop-close').addEventListener('click',()=>d.close());
+  d.addEventListener('click',e=>{if(e.target===d)d.close()});
+  d.addEventListener('close',()=>{document.body.classList.remove('pop-open');if(location.hash==='#'+d.id)history.pushState('',document.title,location.pathname)});
+});
+if(pops.length){addEventListener('hashchange',openPop);openPop()}

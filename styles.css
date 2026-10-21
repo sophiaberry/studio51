@@ -298,24 +298,6 @@ footer .ig { display: inline-flex; }
   .filmstrip figure.p { flex: 1 1 calc(50% - 5px); aspect-ratio: 4 / 5; }
 }
 
-/* ---------- home hero v2: headline on the left, framed photo on the right ---------- */
-.hero { display: grid; grid-template-rows: auto; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 5vw; padding: 5vw 6vw 6vw; min-height: calc(100svh - 86px); }
-.hero .hero-left { position: relative; z-index: 4; display: grid; gap: 14px; justify-items: start; }
-.hero .hero-left .s1, .hero .hero-left .s2 { position: static; }
-.hero .hero-left .s1 { font-size: clamp(64px, 9.5vw, 150px); }
-.hero .hero-left .s2 { font-size: clamp(30px, 4.4vw, 68px); }
-.hero .hero-left .intro { position: static; margin-top: 22px; }
-.photo-frame { position: relative; z-index: 4; margin: 0; justify-self: center; width: min(100%, 400px); aspect-ratio: 4 / 5; border: 12px solid var(--girl); outline: 2px solid var(--ink); box-shadow: 14px 14px 0 var(--lioness); overflow: hidden; }
-.photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-@media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 10vw; padding: 9vw 6vw 14vw; min-height: 0; }
-  .hero .hero-left .s1 { font-size: 17vw; }
-  .hero .hero-left .s2 { font-size: 8.5vw; }
-  .hero .hero-left .intro { margin-top: 12px; }
-  .hero .hero-left .intro .wordblock { font-size: 16px; }
-  .photo-frame { justify-self: start; width: calc(100% - 14px); border-width: 10px; box-shadow: 10px 10px 0 var(--lioness); }
-}
-
 /* ---------- work page v3: text left, assets right ---------- */
 .p-wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: start; }
 .p-left { display: grid; gap: 16px; justify-items: start; }
@@ -354,3 +336,22 @@ footer .ig { display: inline-flex; }
 .about .dark { background: var(--logo-red); }
 .about .light { border-color: var(--logo-red); }
 #spicewheel .script-bg { color: #fff; opacity: .85; }
+
+/* ---------- work page: card grid + pop-ups ---------- */
+.work-index { background: var(--sky); padding: 5vw 6vw 8vw; }
+.wi-title { margin: 0 0 3vw; font-family: var(--grot); font-weight: 900; text-transform: uppercase; letter-spacing: -.035em; line-height: .92; font-size: clamp(40px, 6vw, 88px); color: var(--logo-red); }
+.wgrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 3vw; }
+.wcard { display: grid; gap: 8px; text-decoration: none; color: var(--ink); }
+.wthumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--paper); }
+.wthumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.wcard:hover .wthumb img { transform: scale(1.04); }
+.wclient { font-family: var(--grot); font-weight: 500; font-size: 17px; margin-top: 6px; text-transform: capitalize; }
+.wtitle { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.05; color: var(--logo-red); }
+.pop { border: 0; padding: 0; width: min(1180px, 94vw); max-height: 92vh; overflow: auto; background: transparent; }
+.pop::backdrop { background: rgba(24, 38, 43, .7); }
+.pop .project { margin: 0; }
+.pop-close { position: sticky; top: 14px; float: right; margin: 14px 14px -60px 0; z-index: 10; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); font-size: 26px; line-height: 1; cursor: pointer; }
+.pop-close:hover { background: var(--logo-red); color: #fff; }
+body.pop-open { overflow: hidden; }
+@media (max-width: 900px) { .wgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .wgrid { grid-template-columns: 1fr; gap: 32px; } .pop { width: 100vw; max-width: 100vw; max-height: 100svh; height: 100svh; margin: 0; } }
