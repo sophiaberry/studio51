@@ -337,3 +337,20 @@ footer .ig { display: inline-flex; }
 .p-media figure.w { aspect-ratio: 16 / 10; }
 .p-media figure.p { aspect-ratio: 4 / 5; }
 .p-media figure.w img, .p-media figure.w video { object-position: center top; }
+
+/* work page: full images (no cropping), names wrap instead of running into the assets */
+.p-media figure.w img, .p-media figure.w video { object-position: center; }
+.p-left > .strip { white-space: normal; max-width: 100%; }
+
+/* ---------- blue backgrounds with red type ---------- */
+.work-preview, .work-intro, .about { background: var(--sky); }
+.work-preview .script-bg, .work-intro .script-bg { color: #fff; opacity: .85; }
+.about .script-lines span { color: #fff; opacity: .85; }
+.work-preview h2, .work-intro h2, .about h2 { background: none; box-shadow: none; color: var(--logo-red); padding-left: 0; }
+.work-intro li a { color: var(--logo-red); border-color: var(--logo-red); }
+.work-intro .wl-n, .work-intro .wl-s { color: var(--ink); }
+.cards b { color: var(--ink); }
+.work-preview .btn { background: var(--logo-red); color: #fff; border-color: var(--logo-red); }
+.about .dark { background: var(--logo-red); }
+.about .light { border-color: var(--logo-red); }
+#spicewheel .script-bg { color: #fff; opacity: .85; }
