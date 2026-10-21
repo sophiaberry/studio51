@@ -355,3 +355,9 @@ footer .ig { display: inline-flex; }
 body.pop-open { overflow: hidden; }
 @media (max-width: 900px) { .wgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .wgrid { grid-template-columns: 1fr; gap: 32px; } .pop { width: 100vw; max-width: 100vw; max-height: 100svh; height: 100svh; margin: 0; } }
+
+/* home: red contact call with blue type */
+.cta { background: var(--logo-red); }
+.cta .script-bg { color: var(--sky); opacity: .9; }
+.cta .lead { background: var(--logo-red); color: var(--sky); border-color: var(--sky); }
+.cta .btn-red { background: var(--sky); color: var(--logo-red); border-color: var(--sky); }
