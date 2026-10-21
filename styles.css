@@ -245,3 +245,22 @@ footer .ig { display: inline-flex; }
   .filmstrip figure[style*="--r:0.800"] { aspect-ratio: 4 / 5; }
   .filmstrip figure:not([style*="--r:0.800"]) { flex-basis: 100%; aspect-ratio: var(--r); }
 }
+
+/* ---------- phones: one left edge for everything, swipeable work preview ---------- */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero .intro { left: 6vw; }
+  .hero .s1, .hero .s2 { left: 6vw; right: auto; }
+  .hero .s1 { font-size: 15vw; }
+  .hero .s2 { font-size: 9vw; }
+  .work-preview h2 { font-size: 9.5vw; margin-right: 6vw; white-space: nowrap; }
+  .topbar { padding: 18px 6vw; }
+  .pagebar { padding: 12px 6vw; }
+  .work-preview { padding: 12vw 0 12vw 6vw; gap: 7vw; }
+  .work-preview .btn { margin-right: 6vw; }
+  .cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; max-width: none; padding: 4px 6vw 14px 0; scrollbar-width: none; }
+  .cards::-webkit-scrollbar { display: none; }
+  .cards li { flex: 0 0 68vw; scroll-snap-align: start; }
+  .cards a { align-content: start; }
+  .cards b { font-size: 19px; }
+}
