@@ -421,3 +421,11 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 .about .box { max-width: 520px; padding: 28px 32px; font-size: 20px; }
 .about .portrait { width: 200px; }
 @media (max-width: 760px) { .about .box { max-width: none; padding: 24px; font-size: 19px; } .about .portrait { width: 170px; } }
+
+/* work grid: each preview framed in a brand colour */
+.wthumb { border: 6px solid var(--logo-red); }
+.wgrid li:nth-child(6n+2) .wthumb { border-color: var(--fanta); }
+.wgrid li:nth-child(6n+3) .wthumb { border-color: var(--girl); }
+.wgrid li:nth-child(6n+4) .wthumb { border-color: var(--olive); }
+.wgrid li:nth-child(6n+5) .wthumb { border-color: var(--lioness); }
+.wgrid li:nth-child(6n+6) .wthumb { border-color: var(--lilac); }
