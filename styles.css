@@ -403,3 +403,16 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 @media (max-width: 760px) {
   .hero .photo { aspect-ratio: auto; align-self: start; width: 88vw; height: 110vw; max-width: none; margin: 14vw 0 14vw 6vw; }
 }
+
+/* ---------- home v3: type-only hero, then about ---------- */
+.hero:not(:has(.photo)) { grid-template-columns: 1fr; grid-template-rows: none; min-height: 88svh; }
+.hero:not(:has(.photo)) .intro { left: 6vw; top: 16%; }
+.hero:not(:has(.photo)) .s1 { right: 6vw; top: 44%; font-size: clamp(64px, 13vw, 210px); }
+.hero:not(:has(.photo)) .s2 { left: 6vw; top: 70%; font-size: clamp(36px, 7vw, 116px); }
+@media (max-width: 760px) {
+  .hero:not(:has(.photo)) { min-height: 0; height: 128vw; }
+  .hero:not(:has(.photo)) .intro { top: 14vw; }
+  .hero:not(:has(.photo)) .s1 { top: 78vw; right: auto; left: 6vw; font-size: 17vw; }
+  .hero:not(:has(.photo)) .s2 { top: 100vw; font-size: 9.6vw; }
+}
+@media (max-width: 760px) { body:has(.pagebar.float) .hero:not(:has(.photo)) { min-height: 0; height: 122vw; } }
