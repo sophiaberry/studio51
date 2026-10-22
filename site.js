@@ -39,3 +39,18 @@ if(pops.length){addEventListener('hashchange',openPop);openPop()}
 // ---- Home: reveal the top bar once you scroll ----
 const floatBar=document.querySelector('.pagebar.float');
 if(floatBar){const t=()=>floatBar.classList.toggle('show',scrollY>120);addEventListener('scroll',t,{passive:true});t()}
+
+// ---- A little strawberry follows the mouse (desktop only) ----
+if(matchMedia('(hover: hover) and (pointer: fine)').matches){
+  const b=document.createElement('div');b.className='berry';b.setAttribute('aria-hidden','true');document.body.appendChild(b);
+  const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let tx=-100,ty=-100,x=-100,y=-100,lastX=0,tilt=0;
+  addEventListener('mousemove',e=>{tx=e.clientX+14;ty=e.clientY+12;b.classList.add('on')},{passive:true});
+  document.addEventListener('mouseleave',()=>b.classList.remove('on'));
+  (function step(){
+    x+=calm?tx-x:(tx-x)*.18;y+=calm?ty-y:(ty-y)*.18;
+    tilt+=((x-lastX)*2-tilt)*.15;lastX=x;
+    b.style.transform=`translate(${x}px,${y}px) rotate(${Math.max(-25,Math.min(25,tilt))}deg)`;
+    requestAnimationFrame(step);
+  })();
+}
