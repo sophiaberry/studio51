@@ -388,11 +388,9 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 /* pop-ups with only portrait shots (ATHLOS, Jack Alexander): centre the shots against the text */
 @media (min-width: 761px) { .p-wrap:not(:has(figure.w)) .p-media { align-self: center; } }
 
-/* home hero: selfie in a smaller framed print */
-.hero .photo { align-self: center; justify-self: center; width: min(72%, 400px); aspect-ratio: 4 / 5; border: 12px solid var(--logo-red); box-shadow: 14px 14px 0 var(--sky); margin: 8vh 0; }
-.hero .photo img { object-position: center 30%; }
+/* home hero: on phones the selfie is a smaller framed print */
 @media (max-width: 760px) {
-  .hero .photo { width: calc(100% - 12vw - 10px); justify-self: start; margin: 0 0 12vw 6vw; border-width: 10px; box-shadow: 10px 10px 0 var(--sky); }
+  .hero .photo { aspect-ratio: 4 / 5; border: 10px solid var(--logo-red); box-shadow: 10px 10px 0 var(--sky); width: calc(100% - 12vw - 10px); justify-self: start; margin: 0 0 12vw 6vw; }
+  .hero .photo img { object-position: center 30%; }
 }
-@media (min-width: 761px) { .hero .s1 { top: 70%; } .hero .s2 { top: 82%; } }
 @media (max-width: 760px) { .hero { grid-template-rows: 52svh auto; } .hero .photo { margin-top: 14vw; } }
