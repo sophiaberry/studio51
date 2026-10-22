@@ -442,3 +442,6 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 .services .script-bg, .work-index .script-bg { top: -2vw; left: -2vw; font-size: 26vw; color: #fff; opacity: .85; }
 .services h2, .services ul, .work-index .wi-title, .work-index .wgrid { position: relative; z-index: 1; }
 @media (max-width: 760px) { .services .script-bg, .work-index .script-bg { font-size: 40vw; top: 0; } }
+
+/* contact page title: red box, white type */
+.contact h2.strip { background: var(--logo-red); color: #fff; box-shadow: none; }
