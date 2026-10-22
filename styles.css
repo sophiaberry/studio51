@@ -457,6 +457,6 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 @media (max-width: 560px) { .services { padding-top: 14vw; } .services h2 { margin-bottom: 6vw; } }
 
 /* little vintage strawberry that trails the mouse */
-.berry { position: fixed; left: 0; top: 0; z-index: 9999; width: 30px; height: 34px; pointer-events: none; background: url("images/strawberry.svg") center / contain no-repeat; opacity: 0; transition: opacity .2s; will-change: transform; filter: drop-shadow(1px 2px 0 rgba(24, 38, 43, .25)); }
+.berry { position: fixed; left: 0; top: 0; z-index: 9999; width: 32px; height: 71px; pointer-events: none; background: url("images/strawberry-girl.png") center / contain no-repeat; opacity: 0; transition: opacity .2s; will-change: transform; filter: drop-shadow(1px 2px 0 rgba(24, 38, 43, .25)); }
 .berry.on { opacity: 1; }
 @media (hover: none), (pointer: coarse) { .berry { display: none; } }
