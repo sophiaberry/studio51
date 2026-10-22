@@ -384,3 +384,6 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 .hero .wordblock { background: var(--logo-red); color: #fff; }
 .hero .strip { background: var(--sky); color: var(--logo-red); box-shadow: 0 0 0 2px var(--logo-red); }
 .hero .swash { color: #fff; }
+
+/* pop-ups with only portrait shots (ATHLOS, Jack Alexander): centre the shots against the text */
+@media (min-width: 761px) { .p-wrap:not(:has(figure.w)) .p-media { align-self: center; } }
