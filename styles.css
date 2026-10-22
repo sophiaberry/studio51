@@ -416,3 +416,8 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
   .hero:not(:has(.photo)) .s2 { top: 100vw; font-size: 9.6vw; }
 }
 @media (max-width: 760px) { body:has(.pagebar.float) .hero:not(:has(.photo)) { min-height: 0; height: 122vw; } }
+
+/* about boxes: a bit bigger */
+.about .box { max-width: 520px; padding: 28px 32px; font-size: 20px; }
+.about .portrait { width: 200px; }
+@media (max-width: 760px) { .about .box { max-width: none; padding: 24px; font-size: 19px; } .about .portrait { width: 170px; } }
