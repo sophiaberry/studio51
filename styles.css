@@ -454,3 +454,4 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
   .wgrid li { flex: 0 0 76vw; scroll-snap-align: start; }
 }
 @media (max-width: 560px) { .work-index { min-height: calc(100svh - 74px - 110px); display: flex; flex-direction: column; justify-content: center; } }
+@media (max-width: 560px) { .services { padding-top: 14vw; } .services h2 { margin-bottom: 6vw; } }
