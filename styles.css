@@ -445,3 +445,12 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 
 /* contact page title: red box, white type */
 .contact h2.strip { background: var(--logo-red); color: #fff; box-shadow: none; }
+
+/* phones: work grid scrolls sideways */
+@media (max-width: 560px) {
+  .work-index { padding-right: 0; }
+  .wgrid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding: 0 6vw 16px 0; scrollbar-width: none; }
+  .wgrid::-webkit-scrollbar { display: none; }
+  .wgrid li { flex: 0 0 76vw; scroll-snap-align: start; }
+}
+@media (max-width: 560px) { .work-index { min-height: calc(100svh - 74px - 110px); display: flex; flex-direction: column; justify-content: center; } }
