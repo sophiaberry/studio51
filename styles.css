@@ -462,3 +462,5 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
   clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
   filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .8)); animation: spark .7s ease-out forwards; }
 @keyframes spark { from { opacity: .85; transform: translate(var(--x), var(--y)) scale(1) rotate(0); } to { opacity: 0; transform: translate(var(--x), calc(var(--y) + 10px)) scale(.3) rotate(90deg); } }
+/* phones: work title spacing matches services */
+@media (max-width: 560px) { .work-index { justify-content: flex-start; padding-top: 14vw; } .work-index .wi-title { margin-bottom: 6vw; font-size: clamp(38px, 6vw, 84px); } }
