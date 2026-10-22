@@ -379,3 +379,8 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 .card-img { border-color: #fff; }
 .m-br { display: none; }
 @media (max-width: 760px) { .m-br { display: inline; } }
+
+/* home hero recolour: red services box, blue strips with red type, white swash */
+.hero .wordblock { background: var(--logo-red); color: #fff; }
+.hero .strip { background: var(--sky); color: var(--logo-red); box-shadow: 0 0 0 2px var(--logo-red); }
+.hero .swash { color: #fff; }
