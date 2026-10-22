@@ -394,3 +394,8 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
   .hero .photo img { object-position: center 30%; }
 }
 @media (max-width: 760px) { .hero { grid-template-rows: 52svh auto; } .hero .photo { margin-top: 14vw; } }
+/* phones: framed selfie with a red frame and a blue inner border all the way around */
+@media (max-width: 760px) {
+  .hero .photo { width: calc(100% - 12vw); box-shadow: none; border: 10px solid var(--logo-red); }
+  .hero .photo::after { content: ""; position: absolute; inset: 0; border: 7px solid var(--sky); pointer-events: none; }
+}
