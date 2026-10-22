@@ -456,7 +456,9 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 @media (max-width: 560px) { .work-index { min-height: calc(100svh - 74px - 110px); display: flex; flex-direction: column; justify-content: center; } }
 @media (max-width: 560px) { .services { padding-top: 14vw; } .services h2 { margin-bottom: 6vw; } }
 
-/* little vintage strawberry that trails the mouse */
-.berry { position: fixed; left: 0; top: 0; z-index: 9999; width: 32px; height: 71px; pointer-events: none; background: url("images/strawberry-girl.png") center / contain no-repeat; opacity: 0; transition: opacity .2s; will-change: transform; filter: drop-shadow(1px 2px 0 rgba(24, 38, 43, .25)); }
-.berry.on { opacity: 1; }
-@media (hover: none), (pointer: coarse) { .berry { display: none; } }
+/* subtle silver sparkles that trail the mouse */
+.spark { position: fixed; left: 0; top: 0; z-index: 9999; width: 9px; height: 9px; pointer-events: none;
+  background: radial-gradient(circle, #fff 0 14%, #D9DDE3 30%, #9AA2AE 75%);
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, .8)); animation: spark .7s ease-out forwards; }
+@keyframes spark { from { opacity: .85; transform: translate(var(--x), var(--y)) scale(1) rotate(0); } to { opacity: 0; transform: translate(var(--x), calc(var(--y) + 10px)) scale(.3) rotate(90deg); } }
