@@ -399,3 +399,7 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
   .hero .photo { width: calc(100% - 12vw); box-shadow: none; border: 10px solid var(--logo-red); }
   .hero .photo::after { content: ""; position: absolute; inset: 0; border: 7px solid var(--sky); pointer-events: none; }
 }
+/* phones: give the framed selfie an explicit size so Safari can't stretch it, and leave dark space below */
+@media (max-width: 760px) {
+  .hero .photo { aspect-ratio: auto; align-self: start; width: 88vw; height: 110vw; max-width: none; margin: 14vw 0 14vw 6vw; }
+}
