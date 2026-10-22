@@ -436,3 +436,9 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 .services .svc-d { font-size: 18px; }
 @media (max-width: 900px) { .services ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .services ul { grid-template-columns: 1fr; gap: 12px; } .services .svc { min-height: 0; padding: 20px; } }
+
+/* cursive in the background of services and work */
+.services, .work-index { position: relative; overflow: hidden; }
+.services .script-bg, .work-index .script-bg { top: -2vw; left: -2vw; font-size: 26vw; color: #fff; opacity: .85; }
+.services h2, .services ul, .work-index .wi-title, .work-index .wgrid { position: relative; z-index: 1; }
+@media (max-width: 760px) { .services .script-bg, .work-index .script-bg { font-size: 40vw; top: 0; } }
