@@ -464,3 +464,16 @@ body:has(.pagebar.float) .hero { min-height: 100svh; }
 @keyframes spark { from { opacity: .85; transform: translate(var(--x), var(--y)) scale(1) rotate(0); } to { opacity: 0; transform: translate(var(--x), calc(var(--y) + 10px)) scale(.3) rotate(90deg); } }
 /* phones: work title spacing matches services */
 @media (max-width: 560px) { .work-index { justify-content: flex-start; padding-top: 14vw; } .work-index .wi-title { margin-bottom: 6vw; font-size: clamp(38px, 6vw, 84px); } }
+
+/* ---------- private site: password screen ---------- */
+html.locked body > *:not(.gate) { display: none !important; }
+html.locked, html.locked body { overflow: hidden; }
+.gate { position: fixed; inset: 0; z-index: 10000; background: var(--sky); display: grid; place-items: center; padding: 6vw; overflow: hidden; }
+.gate .script-bg { top: 50%; transform: translateY(-50%); left: -2vw; font-size: 24vw; color: #fff; opacity: .85; }
+.gate form { position: relative; display: grid; gap: 16px; justify-items: center; text-align: center; width: min(100%, 380px); }
+.gate img { width: 96px; height: auto; }
+.gate p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--ink); }
+.gate input { font: inherit; font-family: var(--serif); font-size: 18px; width: 100%; padding: 11px 14px; border: 2px solid var(--logo-red); border-radius: 0; background: #fff; color: var(--ink); text-align: center; }
+.gate input:focus { outline: none; box-shadow: 0 0 0 3px rgba(215, 15, 42, .25); }
+.gate button { font-family: var(--grot); font-weight: 900; font-size: 18px; letter-spacing: .12em; padding: 11px 28px; border: 0; background: var(--logo-red); color: #fff; cursor: pointer; }
+.gate .err { min-height: 1.4em; font-family: var(--mono); font-style: normal; font-size: 13px; color: var(--logo-red); }

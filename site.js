@@ -1,3 +1,19 @@
+// ---- Private site: ask for the password before showing anything ----
+(function(){
+  const root=document.documentElement;if(!root.classList.contains('locked'))return;
+  const HASH='8c551d2e4a0c6d15642de44d727695849df599542cf4f66116343be52e0ae82f';
+  const g=document.createElement('div');g.className='gate';
+  g.innerHTML='<p class="script-bg" aria-hidden="true">private</p><form><img src="images/logo.webp" alt="STUDIO51" width="778" height="813"><p>This site is private. Enter the password to continue.</p><input type="password" aria-label="Password" autocomplete="current-password" required><button type="submit">ENTER</button><p class="err" role="status"></p></form>';
+  document.body.prepend(g);const f=g.querySelector('form'),inp=f.querySelector('input'),err=f.querySelector('.err');inp.focus();
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(inp.value.trim()));
+    const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hex===HASH){try{localStorage.setItem('s51-ok','1')}catch(_){}root.classList.remove('locked');g.remove();dispatchEvent(new Event('hashchange'))}
+    else{err.textContent='That password isn’t right.';inp.select()}
+  });
+})();
+
 // ---- Clock ----
 function clock(){document.getElementById('clock').textContent=' · '+new Date().toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}
 clock();setInterval(clock,30000);
