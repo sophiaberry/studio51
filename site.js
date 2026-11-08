@@ -1,7 +1,7 @@
 // ---- Private site: ask for the password before showing anything ----
 (function(){
   const root=document.documentElement;if(!root.classList.contains('locked'))return;
-  const HASH='8c551d2e4a0c6d15642de44d727695849df599542cf4f66116343be52e0ae82f';
+  const HASH='a6241917b2714b64ea7b89024ade398879afeb8b738b2af1845e99c133830eb8';
   const g=document.createElement('div');g.className='gate';
   g.innerHTML='<p class="script-bg" aria-hidden="true">private</p><form><img src="images/logo.webp" alt="STUDIO51" width="778" height="813"><p>This site is private. Enter the password to continue.</p><input type="password" aria-label="Password" autocomplete="current-password" required><button type="submit">ENTER</button><p class="err" role="status"></p></form>';
   document.body.prepend(g);const f=g.querySelector('form'),inp=f.querySelector('input'),err=f.querySelector('.err');inp.focus();
